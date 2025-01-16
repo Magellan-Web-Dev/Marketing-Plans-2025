@@ -10,10 +10,10 @@ import { parseValue } from './parseValue.ts';
  */
 
 export interface Calculations {
-    monthly: Number;
-    total: Number;
-    discount: Number;
-    savings: Number;
+    monthly: number;
+    total: number;
+    discount: number;
+    savings: number;
     monthlyOutput: string; // Uses the parseValue helper function
     totalOutput: string; // Uses the parseValue helper function
     savingsOutput: string;
@@ -21,11 +21,11 @@ export interface Calculations {
 
 /**
  * Calculate Price
- * 
+ *
  * @param type - string - Type of calculation.  Can be 'monthly', 'quarterly' or 'yearly'.  Other values with throw an error.
  * @param monthlyAmount - number - Total monthly amount.
  * @param discount - number - Quarterly discount. Should be between 0 and 1.
- * 
+ *
  * @return Calculations interface - Returns monthly amount after discount, along with total for quarterly or yearly.
  */
 

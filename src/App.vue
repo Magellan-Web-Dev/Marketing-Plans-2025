@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HttpReq, { ApiData } from '../helpers/httpReq.ts';
-import { calculatePrice, Calculations } from '../helpers/calculatePrice.ts';
-import { Plan, PlanTypes, PriceCalculations } from '../helpers/planInterfaces.ts';
 import { ref, onMounted } from 'vue'
 
 const loading = ref<boolean>(true)

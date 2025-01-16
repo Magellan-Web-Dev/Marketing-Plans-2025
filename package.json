@@ -10,9 +10,15 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "update-backend": "node update-backend.js",
+    "deploy": "node deploy.js",
+    "build-full": "node build-full.js",
+    "build-full-test": "npm run build-full && node build-full-test.js",
+    "build-and-deploy": "npm run build-full && npm run deploy"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "pinia": "^2.3.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -27,6 +33,7 @@
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.14.0",
     "eslint-plugin-vue": "^9.30.0",
+    "ftp-deploy": "^2.4.7",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.3.3",
     "typescript": "~5.6.3",
