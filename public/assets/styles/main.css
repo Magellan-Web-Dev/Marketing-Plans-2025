@@ -1,0 +1,30 @@
+@import 'fonts.css';
+@import 'colors.css';
+@import 'typography.css';
+@import 'transitions.css';
+@import 'borders.css';
+@import 'spacing.css';
+@import 'backgrounds.css';
+@import 'buttons.css';
+@import 'forms.css';
+@import 'sections.css';
+@import 'loadingSpinner.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-weight: 500;
+    color: var(--white);
+}
+
+html,
+body {
+overflow-x: hidden;
+}
+
+::selection {
+background: var(--color-1);
+color: var(--white);
+}

@@ -1,0 +1,5 @@
+/* Do not change variable name of --transition-default as it is used by javascript.  Value must be in ms (milliseconds) */
+
+:root {
+    --transition-default: 500ms;
+}

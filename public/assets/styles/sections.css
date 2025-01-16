@@ -1,0 +1,37 @@
+/* Section Styling */
+
+.section {
+  gap: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  animation: height-transition var(--transition-default) forwards;
+}
+
+/* Section Height Animation */
+
+@keyframes height-transition {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: var(--height-transition-amount);
+  }
+}
+
+/* Subsection */
+
+.sub-section {
+    padding: var(--vertical-padding-2) var(--side-padding-2);
+    border: var(--border-thickness-1) var(--color-1) solid;
+    background: var(--overlay-1);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--row-gap-1);
+}
+
+.sub-section h4 {
+    grid-column: 1 / -1;
+    text-align: center;
+    flex: 1 1 100%;
+}

@@ -1,0 +1,560 @@
+[
+    {
+        "dollarPlans": [
+            {
+                "title": "$1 Million Dollar Plan",
+                "monthlyPrice": 2175,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "A month-to-month commitment, offering core marketing services.",
+                "estimatedAnnualROI": 1953900,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Up to 5 posts/month on 1 platform, basic engagement."
+                    },
+                    {
+                        "title": "Content Creation",
+                        "description": "1 blog post/month (500–800 words), basic visuals."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "1 funnel with up to 3 emails for lead nurturing."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$1,000/month **Meta** ad spend only."
+                    },
+                    {
+                        "title": "SEO & Competitor Analysis",
+                        "description": "Not included in this plan."
+                    }
+                ],
+                "planPrice": 1000000
+            },
+            {
+                "title": "$3 Million Dollar Plan",
+                "monthlyPrice": 4500,
+                "quarterlyDiscount": 0,
+                "yearlyDiscount": 0,
+                "description": "A comprehensive plan with enhanced marketing efforts.",
+                "estimatedAnnualROI": 3909900,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Up to 10 posts/month on 2 platforms, basic engagement."
+                    },
+                    {
+                        "title": "Content Creation",
+                        "description": "2 blog posts/month (800–1,200 words), stock visuals."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "1 funnel with up to 5 emails."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$1,500/month **Meta** ad spend."
+                    },
+                    {
+                        "title": "SEO Optimization",
+                        "description": "Up to 5 pages, basic keyword research & competitor analysis."
+                    },
+                    {
+                        "title": "Lead Generation",
+                        "description": "5–10 ready-to-contact leads/month."
+                    },
+                    {
+                        "title": "Live YouTube Broadcasts",
+                        "description": "Access to studio-based monthly broadcasts."
+                    }
+                ],
+                "planPrice": 3000000
+            },
+            {
+                "title": "$5 Million Dollar Plan",
+                "monthlyPrice": 7500,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "A balanced plan for consistent lead generation and growth.",
+                "estimatedAnnualROI": 7835850,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Up to 20 posts/month across 3 platforms, monthly analytics."
+                    },
+                    {
+                        "title": "Content Creation",
+                        "description": "4 blog posts/month (1,200–1,500 words), custom visuals."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "2 funnels (up to 10 emails total)."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$3,000/month **Google & Meta** campaigns."
+                    },
+                    {
+                        "title": "SEO Optimization",
+                        "description": "Up to 10 pages, competitor analysis."
+                    },
+                    {
+                        "title": "Lead Generation",
+                        "description": "15–25 qualified leads/month."
+                    },
+                    {
+                        "title": "Live YouTube Broadcasts",
+                        "description": "Monthly studio-based broadcasts."
+                    },
+                    {
+                        "title": "PR & Backlinking",
+                        "description": "Monthly press coverage and referring domain building."
+                    }
+                ],
+                "planPrice": 5000000
+            },
+            {
+                "title": "$10 Million Dollar Plan",
+                "monthlyPrice": 11500,
+                "quarterlyDiscount": 0,
+                "yearlyDiscount": 0,
+                "description": "An advanced plan for aggressive marketing strategies.",
+                "estimatedAnnualROI": 11755800,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Up to 40 posts/month across 4 platforms with advanced engagement."
+                    },
+                    {
+                        "title": "Content Creation",
+                        "description": "6 blog posts/month (1,500+ words), videos & interactive content."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "3 funnels with advanced segmentation."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$5,000/month across **Google, Meta, Quora, X, YouTube**."
+                    },
+                    {
+                        "title": "SEO Optimization",
+                        "description": "Full-site optimization with competitor analysis."
+                    },
+                    {
+                        "title": "Lead Generation",
+                        "description": "30–50 qualified leads/month."
+                    },
+                    {
+                        "title": "Social Influencer Collaboration",
+                        "description": "Advanced multi-channel influencer synergy."
+                    },
+                    {
+                        "title": "PR & Backlinking",
+                        "description": "Regular PR campaigns and advanced link-building strategies."
+                    },
+                    {
+                        "title": "Live YouTube Broadcasts",
+                        "description": "Studio-based monthly broadcasts."
+                    }
+                ],
+                "planPrice": 10000000
+            },
+            {
+                "title": "$15 Million Dollar Plan",
+                "monthlyPrice": 20000,
+                "quarterlyDiscount": 0,
+                "yearlyDiscount": 0,
+                "description": "A premium plan for market dominance.",
+                "estimatedAnnualROI": 15623700,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Unlimited posts across all platforms."
+                    },
+                    {
+                        "title": "Content Creation & Management",
+                        "description": "Unlimited blogs, premium videos, and multimedia campaigns."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "Unlimited email funnels."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$10,000/month across **Google, Meta, Quora, X, YouTube**."
+                    },
+                    {
+                        "title": "SEO Optimization",
+                        "description": "Full-site optimization, competitor analysis, real-time reporting."
+                    },
+                    {
+                        "title": "Lead Generation",
+                        "description": "Unlimited pre-qualified leads."
+                    },
+                    {
+                        "title": "Social Influencer Collaboration",
+                        "description": "Unlimited influencer partnerships worldwide."
+                    },
+                    {
+                        "title": "PR & Backlinking",
+                        "description": "Extensive PR campaigns and global link-building strategy."
+                    },
+                    {
+                        "title": "Live YouTube Broadcasts",
+                        "description": "Studio-based broadcasts and brand showcases."
+                    }
+                ],
+                "planPrice": 15000000
+            }
+        ],
+        "focusPlans": [
+            {
+                "title": "Public Relations Plan",
+                "monthlyPrice": 3000,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "A comprehensive PR strategy designed to boost brand visibility and reputation.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Basic Tier",
+                        "description": "$3,000/month - Press release creation and distribution to local media."
+                    },
+                    {
+                        "title": "Standard Tier",
+                        "description": "$5,000/month - Press release creation, national media outreach, and social media PR campaigns."
+                    },
+                    {
+                        "title": "Advanced Tier",
+                        "description": "$8,000/month - Crisis management, thought leadership articles, and media training."
+                    },
+                    {
+                        "title": "Premium Tier",
+                        "description": "$12,000/month - Full-scale PR strategy, influencer partnerships, and global media outreach."
+                    }
+                ]
+            },
+            {
+                "title": "Social Media Management Plan",
+                "monthlyPrice": 1200,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "Focused solely on social media growth, engagement, and content creation.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Basic Tier",
+                        "description": "$1,200/month - Up to 5 posts/week on 1 platform, basic engagement (e.g., responding to comments/messages)."
+                    },
+                    {
+                        "title": "Standard Tier",
+                        "description": "$2,500/month - Up to 10 posts/week on 2 platforms, hashtag research, and analytics reporting."
+                    },
+                    {
+                        "title": "Advanced Tier",
+                        "description": "$4,000/month - Up to 15 posts/week on 3 platforms, influencer collaboration, and engagement strategy."
+                    },
+                    {
+                        "title": "Premium Tier",
+                        "description": "$6,000/month - Unlimited posts on all platforms, proactive engagement, and audience growth strategies."
+                    }
+                ]
+            },
+            {
+                "title": "Appointment-Ready Leads",
+                "monthlyPrice": 2000,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "Focused on delivering pre-qualified leads ready to book appointments.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Small Tier",
+                        "description": "Up to 10 leads/month for $2,000."
+                    },
+                    {
+                        "title": "Medium Tier",
+                        "description": "Up to 25 leads/month for $4,500."
+                    },
+                    {
+                        "title": "Large Tier",
+                        "description": "Up to 50 leads/month for $8,500."
+                    },
+                    {
+                        "title": "Unlimited Tier",
+                        "description": "Unlimited leads for $15,000."
+                    },
+                    {
+                        "description": "All leads are pre-qualified and ready to book appointments."
+                    },
+                    { "description": "Includes direct calendar booking integration." },
+                    { "description": "Custom lead targeting and profiling available." }
+                ]
+            },
+            {
+                "title": "Complete SEO Optimization Plan",
+                "monthlyPrice": 1500,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "Dedicated to driving organic traffic and improving online visibility.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Basic Tier",
+                        "description": "$1,500/month - Keyword research and on-page SEO"
+                    },
+                    {
+                        "title": "Standard Tier",
+                        "description": "$3,000/month - Backlink building and local SEO"
+                    },
+                    {
+                        "title": "Advanced Tier",
+                        "description": "$5,000/month - Comprehensive audits and strategies"
+                    },
+                    {
+                        "title": "Premium Tier",
+                        "description": "$7,500/month - Full-scale SEO with global targeting"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "dollarPlans": [
+            {
+                "title": "$1 Million Dollar Plan",
+                "monthlyPrice": 2175,
+                "quarterlyDiscount": 0,
+                "yearlyDiscount": 0,
+                "description": "A month-to-month commitment, offering core marketing services.",
+                "estimatedAnnualROI": 1953900,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Up to 5 posts/month on 1 platform, basic engagement."
+                    },
+                    {
+                        "title": "Content Creation",
+                        "description": "1 blog post/month (500–800 words), basic visuals."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "1 funnel with up to 3 emails."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$1,000/month **Meta** ad spend only."
+                    },
+                    {
+                        "title": "SEO & Competitor Analysis",
+                        "description": "Not included in this plan."
+                    }
+                ],
+                "planPrice": 1000000
+            },
+            {
+                "title": "$5 Million Dollar Plan",
+                "monthlyPrice": 7500,
+                "quarterlyDiscount": 0,
+                "yearlyDiscount": 0,
+                "description": "A balanced plan for consistent lead generation and growth.",
+                "estimatedAnnualROI": 7835850,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Up to 20 posts/month across 3 platforms, monthly analytics."
+                    },
+                    {
+                        "title": "Content Creation",
+                        "description": "4 blog posts/month (1,200–1,500 words), custom visuals."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "2 funnels (up to 10 emails total)."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$5,000/month **Google & Meta** campaigns."
+                    },
+                    {
+                        "title": "SEO Optimization",
+                        "description": "Up to 10 pages, competitor analysis."
+                    },
+                    {
+                        "title": "Lead Generation",
+                        "description": "15–25 qualified leads/month."
+                    },
+                    {
+                        "title": "Live YouTube Broadcasts",
+                        "description": "Monthly studio-based broadcasts."
+                    },
+                    {
+                        "title": "PR & Backlinking",
+                        "description": "Monthly press coverage and referring domain building."
+                    }
+                ],
+                "planPrice": 5000000
+            },
+            {
+                "title": "$20 Million Dollar Plan",
+                "monthlyPrice": 20000,
+                "quarterlyDiscount": 0,
+                "yearlyDiscount": 0,
+                "description": "A premium, all-inclusive plan combining advanced strategies for aggressive growth.",
+                "estimatedAnnualROI": 27379500,
+                "keyFeatures": [
+                    {
+                        "title": "Social Media Management",
+                        "description": "Daily posts across all platforms with advanced engagement."
+                    },
+                    {
+                        "title": "Content Creation & Management",
+                        "description": "Weekly blog (1,500+ words), premium videos, and multimedia campaigns."
+                    },
+                    {
+                        "title": "Email Marketing Funnels",
+                        "description": "Lifetime funnel nurturing with advanced segmentation."
+                    },
+                    {
+                        "title": "Digital Marketing (Ad Spend Included)",
+                        "description": "$15,000/month across Google, Meta, Quora, X, YouTube."
+                    },
+                    {
+                        "title": "SEO Optimization",
+                        "description": "Full-site optimization, competitor analysis, and real-time reporting."
+                    },
+                    {
+                        "title": "Lead Generation",
+                        "description": "Direct appointment targeted pre-qualified leads."
+                    },
+                    {
+                        "title": "Social Influencer Collaboration",
+                        "description": "Paid influencer partnerships worldwide."
+                    },
+                    {
+                        "title": "PR & Backlinking",
+                        "description": "Extensive PR campaigns and credible news & finance sources (Yahoo Finance, USA Today, Entrepreneur, etc.) link-building strategies."
+                    },
+                    {
+                        "title": "Live YouTube Broadcasts",
+                        "description": "Studio-based broadcasts and brand showcases to grow your YouTube channel."
+                    }
+                ],
+                "planPrice": 20000000
+            }
+        ],
+        "focusPlans": [
+            {
+                "title": "Public Relations Plan",
+                "monthlyPrice": 3000,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "A comprehensive PR strategy designed to boost brand visibility and reputation.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Basic Tier",
+                        "description": "$3,000/month - Press release creation and distribution to local media."
+                    },
+                    {
+                        "title": "Standard Tier",
+                        "description": "$5,000/month - Press release creation, national media outreach, and social media PR campaigns."
+                    },
+                    {
+                        "title": "Advanced Tier",
+                        "description": "$8,000/month - Crisis management, thought leadership articles, and media training."
+                    },
+                    {
+                        "title": "Premium Tier",
+                        "description": "$12,000/month - Full-scale PR strategy, influencer partnerships, and global media outreach."
+                    }
+                ]
+            },
+            {
+                "title": "Social Media Management Plan",
+                "monthlyPrice": 1200,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "Focused solely on social media growth, engagement, and content creation.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Basic Tier",
+                        "description": "$1,200/month - Up to 5 posts/week on 1 platform, basic engagement (e.g., responding to comments/messages)."
+                    },
+                    {
+                        "title": "Standard Tier",
+                        "description": "$2,500/month - Up to 10 posts/week on 2 platforms, hashtag research, and analytics reporting."
+                    },
+                    {
+                        "title": "Advanced Tier",
+                        "description": "$4,000/month - Up to 15 posts/week on 3 platforms, influencer collaboration, and engagement strategy."
+                    },
+                    {
+                        "title": "Premium Tier",
+                        "description": "$6,000/month - Unlimited posts on all platforms, proactive engagement, and audience growth strategies."
+                    }
+                ]
+            },
+            {
+                "title": "Appointment-Ready Leads",
+                "monthlyPrice": 2000,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "Focused on delivering pre-qualified leads ready to book appointments.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Small Tier",
+                        "description": "Up to 10 leads/month for $2,000."
+                    },
+                    {
+                        "title": "Medium Tier",
+                        "description": "Up to 25 leads/month for $4,500."
+                    },
+                    {
+                        "title": "Large Tier",
+                        "description": "Up to 50 leads/month for $8,500."
+                    },
+                    {
+                        "title": "Unlimited Tier",
+                        "description": "Unlimited leads for $15,000."
+                    },
+                    {
+                        "description": "All leads are pre-qualified and ready to book appointments."
+                    },
+                    { "description": "Includes direct calendar booking integration." },
+                    { "description": "Custom lead targeting and profiling available." }
+                ]
+            },
+            {
+                "title": "Complete SEO Optimization Plan",
+                "monthlyPrice": 1500,
+                "quarterlyDiscount": 0.1,
+                "yearlyDiscount": 0.15,
+                "description": "Dedicated to driving organic traffic and improving online visibility.",
+                "estimatedAnnualROI": 0,
+                "keyFeatures": [
+                    {
+                        "title": "Basic Tier",
+                        "description": "$1,500/month - Keyword research and on-page SEO"
+                    },
+                    {
+                        "title": "Standard Tier",
+                        "description": "$3,000/month - Backlink building and local SEO"
+                    },
+                    {
+                        "title": "Advanced Tier",
+                        "description": "$5,000/month - Comprehensive audits and strategies"
+                    },
+                    {
+                        "title": "Premium Tier",
+                        "description": "$7,500/month - Full-scale SEO with global targeting"
+                    }
+                ]
+            }
+        ]
+    }
+]
