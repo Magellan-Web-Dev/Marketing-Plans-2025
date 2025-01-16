@@ -92,7 +92,7 @@ export const usePlansStore = defineStore('plans', () => {
    * @return A promise that resolves to `true` if successful, or `false` if the request fails.
    */
 
-  async function fetchPlans(): Promise<boolean> {
+  async function fetch(): Promise<boolean> {
 
     // Check that plansUrl is not null
 
@@ -111,6 +111,7 @@ export const usePlansStore = defineStore('plans', () => {
       }
 
       plansData.value = response.data as PlanTypes[]
+      calculateData()
       return true
     } catch (err) {
       console.error('Error fetching rates data:', err)
@@ -174,5 +175,5 @@ export const usePlansStore = defineStore('plans', () => {
 
   // Return state and methods
 
-  return { plansUrl, plansData, calculatedPlans, setUrl, fetchPlans, calculateData }
+  return { plansUrl, plansData, calculatedPlans, setUrl, fetch, calculateData }
 })

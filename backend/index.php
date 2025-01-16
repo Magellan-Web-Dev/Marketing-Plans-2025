@@ -11,7 +11,7 @@
  * Initialize PSR-4 autoloader for autoloading classes.
  */
 
-    require_once INCLUDES_DIR . '/vendor/autoload.php';
+    require_once BASE_DIR . '/vendor/autoload.php';
 
 /**
  * Load environment variables from .env file.

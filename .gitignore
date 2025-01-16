@@ -33,6 +33,6 @@ coverage
 
 .env
 
-# Composer vendor file
+# Backend Composer vendor folder
 
 /backend/vendor
