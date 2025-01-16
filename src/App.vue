@@ -24,6 +24,8 @@ onMounted(async(): Promise<void> => {
 
   const getPlans = await plans.fetch()
 
+  console.log(plans.calculatedPlans);
+
   // Error handler if plans data could not be retrieved
 
   if (!getPlans) {
