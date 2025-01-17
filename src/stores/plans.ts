@@ -43,7 +43,7 @@ export interface Plan {
  */
 
 export interface PlanTypes {
-  map(arg0: (section: PlanTypes) => PlanTypes): PlanTypes | null
+  id: number;
   dollarPlans: Plan[]
   focusPlans: Plan[]
 }
