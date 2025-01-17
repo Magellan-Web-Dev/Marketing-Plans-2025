@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { type PlanTypes } from '../../stores/plans.ts'
+import CardItem from './CardItem.vue'
 
 const props = defineProps<{
   data: PlanTypes
 }>()
 
-const { id, dollarPlans, focusPlans } = props.data
+const { dollarPlans, focusPlans } = props.data
 
-console.log(id)
-console.log(dollarPlans)
-console.log(focusPlans)
 </script>
 
 <template>
-  <div></div>
+    <ul class="list-layout">
+      <CardItem v-for="item in dollarPlans" :key="item.id" :data="item" />
+    </ul>
+    <ul class="list-layout">
+      <CardItem v-for="item in focusPlans" :key="item.id" :data="item" />
+    </ul>
 </template>

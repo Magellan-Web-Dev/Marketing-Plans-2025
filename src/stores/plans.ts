@@ -2,12 +2,13 @@ import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
 import HttpReq, { type ApiData } from '../../helpers/httpReq.ts'
 import { calculatePrice, type Calculations } from '../../helpers/calculatePrice.ts'
+import { parseValue } from '../../helpers/parseValue.ts'
 
 /**
  * KeyFeature, Plan, PlanTypes interfaces are part of api data
  */
 
-interface KeyFeature {
+export interface KeyFeature {
   id: number
   plan: number
   title?: string
@@ -22,6 +23,16 @@ export interface PriceCalculations {
   monthly: Calculations
   quarterly: Calculations
   yearly: Calculations
+  estimatedAnnualROI: RoiOutput
+}
+
+/**
+ * Estimated ROI interface
+ */
+
+export interface RoiOutput {
+  total: number,
+  output: string
 }
 
 /**
@@ -39,7 +50,7 @@ export interface Plan {
   estimatedAnnualROI: number
   keyFeatures: KeyFeature[] // Key Feature
   planPrice?: number // planPrice is used for dollarPlans
-  priceCalculations?: PriceCalculations
+  priceCalculations: PriceCalculations
 }
 
 /**
@@ -155,10 +166,15 @@ export const usePlansStore = defineStore('plans', () => {
                 plan.monthlyPrice,
                 plan.yearlyDiscount,
               )
+              const estimatedAnnualROI: RoiOutput = {
+                total: plan.estimatedAnnualROI,
+                output: parseValue(plan.estimatedAnnualROI, 'dollar')
+              }
               const priceCalculations: PriceCalculations = {
                 monthly,
                 quarterly,
                 yearly,
+                estimatedAnnualROI
               }
               ;(section[key] as unknown as Plan[])[index] = {
                 ...plan,

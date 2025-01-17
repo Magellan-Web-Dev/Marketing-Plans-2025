@@ -44,3 +44,7 @@
   z-index: -1;
   mix-blend-mode: luminosity;
 }
+
+.background-dark-1 {
+  background: var(--overlay-2);
+}

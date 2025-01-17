@@ -9,6 +9,7 @@
 @import 'forms.css';
 @import 'sections.css';
 @import 'loadingSpinner.css';
+@import 'lists.css';
 
 * {
     margin: 0;

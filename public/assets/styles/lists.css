@@ -1,0 +1,35 @@
+:root {
+  --list-gap: 2.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.lists-layouts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-gap);
+}
+
+.list-layout {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--list-gap);
+}
+
+.list-item-styling {
+  padding: var(--vertical-padding-3) var(--side-padding-2);
+  border: 3px var(--color-1) solid;
+  flex: 1 1 320px;
+  background: var(--overlay-2);
+}
+
+.list-item-styling hr {
+  height: 1px;
+  border: 0px;
+  background: var(--white);
+}

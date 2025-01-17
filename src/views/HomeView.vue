@@ -7,6 +7,8 @@ const data: PlanTypes[] | null = usePlansStore().calculatedPlans
 </script>
 
 <template>
-  <CardsList v-for="planList in data" :key="planList.id"
-    :data="planList" />
+  <div class="lists-layouts">
+    <CardsList v-for="planList in data" :key="planList.id"
+      :data="planList" />
+  </div>
 </template>
