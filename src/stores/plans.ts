@@ -8,7 +8,9 @@ import { calculatePrice, type Calculations } from '../../helpers/calculatePrice.
  */
 
 interface KeyFeature {
-  title: string
+  id: number
+  plan: number
+  title?: string
   description: string
 }
 
@@ -27,6 +29,8 @@ export interface PriceCalculations {
  */
 
 export interface Plan {
+  id: number
+  type: string
   title: string
   monthlyPrice: number
   quarterlyDiscount: number
@@ -43,7 +47,7 @@ export interface Plan {
  */
 
 export interface PlanTypes {
-  id: number;
+  id: number
   dollarPlans: Plan[]
   focusPlans: Plan[]
 }
@@ -93,7 +97,6 @@ export const usePlansStore = defineStore('plans', () => {
    */
 
   async function fetch(): Promise<boolean> {
-
     // Check that plansUrl is not null
 
     if (!plansUrl.value) {
@@ -128,7 +131,6 @@ export const usePlansStore = defineStore('plans', () => {
 
   function calculateData(): void {
     try {
-
       // Check that plansData has been retrieved first before performing calculations.
 
       if (!plansData.value) {
@@ -138,7 +140,7 @@ export const usePlansStore = defineStore('plans', () => {
       // Perform calculations.  Calculate monthly, quarterly, and yearly discounts and savings.
 
       calculatedPlans.value = (plansData.value as PlanTypes[]).map((section) => {
-        (Object.keys(section) as Array<keyof PlanTypes>).forEach((key) => {
+        ;(Object.keys(section) as Array<keyof PlanTypes>).forEach((key) => {
           if (Array.isArray(section[key])) {
             const plans = section[key] as Plan[]
             plans.forEach((plan: Plan, index: number) => {
@@ -157,10 +159,10 @@ export const usePlansStore = defineStore('plans', () => {
                 monthly,
                 quarterly,
                 yearly,
-              };
-              (section[key] as unknown as Plan[])[index] = {
+              }
+              ;(section[key] as unknown as Plan[])[index] = {
                 ...plan,
-                priceCalculations
+                priceCalculations,
               }
             })
           }
