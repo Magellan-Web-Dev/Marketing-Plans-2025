@@ -1,35 +1,102 @@
 :root {
-  --list-gap: 2.5rem;
+  --list-card-gap: 2.5em;
+  --list-card-content-gap: 0.5em;
+  --list-card-row-gap: 1em;
 }
 
 ul {
     list-style: none;
     padding: 0;
     width: 100%;
+    font-size: inherit;
 }
 
 .lists-layouts {
   display: flex;
   flex-direction: column;
-  gap: var(--list-gap);
+  gap: var(--list-card-gap);
 }
 
 .list-layout {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--list-gap);
+    gap: var(--list-card-gap);
 }
 
 .list-item-styling {
   padding: var(--vertical-padding-3) var(--side-padding-2);
   border: 3px var(--color-1) solid;
-  flex: 1 1 320px;
+  flex: 1 1 var(--content-text-small);
+  max-width: var(--content-text-normal);
   background: var(--overlay-2);
+}
+
+.list-item-styling :is(h2, h3, h4, .description, .key-features, .price) {
+    text-align: center;
+    text-wrap: balance;
+    font-weight: 500;
+}
+
+.list-item-styling .description {
+    margin-top: 0.5em;
 }
 
 .list-item-styling hr {
   height: 1px;
   border: 0px;
   background: var(--white);
+  margin: 1em 0;
+}
+
+.key-features-list, .prices-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-card-content-gap);
+}
+
+.key-features-list {
+    margin-top: 0.75em;
+}
+
+.key-item-styling {
+    display: flex;
+    align-items: start;
+    gap: var(--list-card-content-gap);
+}
+
+.key-item-styling::before {
+    content: '';
+    background: url('/applications/apps/client_use/marketing_plans/assets/icons/checkmark.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    margin-top: 0.125em;
+}
+
+.prices-list {
+    margin-top: 1.5em;
+    container-type: inline-size;
+    row-gap: var(--list-card-row-gap);
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: var(--list-card-content-gap);
+    row-gap: var(--list-card-row-gap);
+}
+
+.price {
+    flex-shrink: 0;
+}
+
+@container(max-width: 40ch) {
+    .price-item .button {
+        padding: 0.75em 6cqw !important;
+        min-width: 9ch;
+    }
 }

@@ -9,15 +9,14 @@
 
 .button {
   cursor: pointer;
-  padding: 1.375em 2.5em;
+  padding: 1.375em 2em;
   background: url('/assets/images/MAG-Web_Button_Over.svg');
   background-repeat: no-repeat;
   background-size: cover;
   border: 0px;
   position: relative;
   isolation: isolate;
-  flex: 0 1 var(--input-button-field-width);
-  grid-column: 1 / 2;
+  min-width: min(20ch, 100%);
 }
 
 .button::before {

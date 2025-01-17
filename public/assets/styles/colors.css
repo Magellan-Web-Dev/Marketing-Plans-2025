@@ -8,3 +8,7 @@
     --overlay-1: #010101b3;
     --overlay-2: #010101c2;
 }
+
+.text-color-1 {
+    color: var(--color-1);
+}

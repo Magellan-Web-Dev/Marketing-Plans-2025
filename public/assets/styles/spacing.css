@@ -1,8 +1,10 @@
 /* Do not change name of --height-transition-amount variable below.  It is used by javascript */
 
 :root {
-  --content-width: min(170ch, 100%);
-  --content-width-small: min(90ch, 100%);
+  --content-width: min(1600px, 100%);
+  --content-text-wide: min(90ch, 100%);
+  --content-text-normal: min(65ch, 100%);
+  --content-text-small: min(45ch, 100%);
   --input-button-field-width: min(15rem, 100%);
   --output-calculation-width: min(15rem, 100%);
   --side-padding-1: clamp(20px, 2%, 3rem);
@@ -20,4 +22,8 @@
   :root {
     --height-transition-amount: 220rem;
   }
+}
+
+.boxed-content-width {
+  width: min(var(--content-width), 100%);
 }

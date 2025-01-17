@@ -7,7 +7,6 @@
 @import 'backgrounds.css';
 @import 'buttons.css';
 @import 'forms.css';
-@import 'sections.css';
 @import 'loadingSpinner.css';
 @import 'lists.css';
 
@@ -22,10 +21,10 @@
 
 html,
 body {
-overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 ::selection {
-background: var(--color-1);
-color: var(--white);
+    background: var(--color-1);
+    color: var(--white);
 }

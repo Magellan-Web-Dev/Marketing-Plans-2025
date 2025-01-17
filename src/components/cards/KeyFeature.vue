@@ -11,7 +11,7 @@ const { title, description } = props.data
 </script>
 
 <template>
-  <li>
+  <li class="key-item-styling">
     <strong v-if="title">
       {{ title }}:
     </strong>
