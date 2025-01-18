@@ -1,5 +1,5 @@
-import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
+import { ref, type Ref } from 'vue'
 import HttpReq, { type ApiData } from '../../helpers/httpReq.ts'
 import { calculatePrice, type Calculations } from '../../helpers/calculatePrice.ts'
 import { parseValue } from '../../helpers/parseValue.ts'

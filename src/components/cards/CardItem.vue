@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { type Plan } from '../../stores/plans.ts'
+import { useSelectedStore, type SelectedData } from '../../stores/selected.ts'
 import KeyFeature from './KeyFeature.vue'
 
 const props = defineProps<{
@@ -11,27 +12,58 @@ const { id, title, description, keyFeatures } = props.data
 
 const { monthly, quarterly, yearly } = props.data.priceCalculations
 
-// Price select interface
-
-interface SelectedData {
-  id: number;
-  pricePlan: 'monthly' | 'quarterly' | 'yearly'
-}
-
-// Price select click handler
+/**
+ * Price select click handler
+ *
+ * @param Event
+ * @return void
+ */
 
 function priceSelect(e: Event): void {
+  const clickedItemData = buttonClickData(e)
+  if (clickedItemData) useSelectedStore().clickedPriceHandler(clickedItemData)
+}
+
+/**
+ * Check if price plan button has already been selected in the useSelectedStore selectedPlans state
+ *
+ * @param Event
+ * @return boolean|void
+ */
+
+ function priceAlreadySelected(pricing: string): boolean| void {
+  if (pricing !== 'monthly' && pricing !== 'quarterly' && pricing !== 'yearly') {
+    console.error(
+      `Pricing parameter must have a value of 'monthly', 'quarterly', or 'yearly' for the priceAlreadySelected function`,
+    )
+    return
+  }
+  const clickedItemData: SelectedData = {
+    plan: id,
+    pricing,
+  }
+  return useSelectedStore().samePlanSelected(clickedItemData)
+}
+
+/**
+ * Collect button click data
+ *
+ * @param Event
+ * @return SelectedData|void
+ */
+
+function buttonClickData(e: Event): SelectedData|void {
   // Select HTML button clicked
 
   const htmlButton = e.target as HTMLButtonElement
 
   // Get data price attribute value
 
-  const pricePlan: string = htmlButton.dataset.price ? htmlButton.dataset.price.toLowerCase() : ''
+  const pricing: string = htmlButton.dataset.price ? htmlButton.dataset.price.toLowerCase() : ''
 
   // Check that priceType is a valid type
 
-  if (pricePlan !== 'monthly' && pricePlan !== 'quarterly' && pricePlan !== 'yearly') {
+  if (pricing !== 'monthly' && pricing !== 'quarterly' && pricing !== 'yearly') {
     console.error(
       `Price button must have a data attribute of 'price' with a value of 'monthly', 'quarterly', or 'yearly'`,
     )
@@ -39,11 +71,11 @@ function priceSelect(e: Event): void {
   }
 
   const clickedItemData: SelectedData = {
-    id,
-    pricePlan
+    plan: id,
+    pricing,
   }
 
-  console.log(clickedItemData);
+  return clickedItemData
 }
 </script>
 
@@ -60,21 +92,21 @@ function priceSelect(e: Event): void {
     <h4 class="prices-heading"><strong>Pricing Plans</strong></h4>
     <ul class="prices-list">
       <li class="price-item">
-        <p class="monthly-amount price">{{ monthly.outputs.totalOutput }} / monthly</p>
-        <button @click="priceSelect" class="button button-highlight-hover" data-price="monthly">
-          Select
+        <h5 class="monthly-amount price">{{ monthly.outputs.totalOutput }} / monthly</h5>
+        <button @click="priceSelect" :class="[{ 'button-highlight': priceAlreadySelected('monthly') }, 'button button-highlight-hover']" data-price="monthly">
+          {{ priceAlreadySelected('monthly') ? 'Selected' : 'Select' }}
         </button>
       </li>
       <li class="price-item">
-        <p class="quarterly-amount price">{{ quarterly.outputs.totalOutput }} / quarterly</p>
-        <button @click="priceSelect" class="button button-highlight-hover" data-price="quarterly">
-          Select
+        <h5 class="quarterly-amount price">{{ quarterly.outputs.totalOutput }} / quarterly</h5>
+        <button @click="priceSelect" :class="[{ 'button-highlight': priceAlreadySelected('quarterly') }, 'button button-highlight-hover']" data-price="quarterly">
+          {{ priceAlreadySelected('quarterly') ? 'Selected' : 'Select' }}
         </button>
       </li>
       <li class="price-item">
-        <p class="yearly-amount price">{{ yearly.outputs.totalOutput }} / yearly</p>
-        <button @click="priceSelect" class="button button-highlight-hover" data-price="yearly">
-          Select
+        <h5 class="yearly-amount price">{{ yearly.outputs.totalOutput }} / yearly</h5>
+        <button @click="priceSelect" :class="[{ 'button-highlight': priceAlreadySelected('yearly') }, 'button button-highlight-hover']" data-price="yearly">
+          {{ priceAlreadySelected('yearly') ? 'Selected' : 'Select' }}
         </button>
       </li>
     </ul>

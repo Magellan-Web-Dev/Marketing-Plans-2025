@@ -25,11 +25,13 @@ ul {
 }
 
 .list-item-styling {
-  padding: var(--vertical-padding-3) var(--side-padding-2);
+  padding: var(--vertical-padding-2) var(--side-padding-2);
   border: 3px var(--color-1) solid;
   flex: 1 1 var(--content-text-small);
   max-width: var(--content-text-normal);
   background: var(--overlay-2);
+  display: flex;
+  flex-direction: column;
 }
 
 .list-item-styling :is(h2, h3, h4, .description, .key-features, .price) {
@@ -53,10 +55,13 @@ ul {
     display: flex;
     flex-direction: column;
     gap: var(--list-card-content-gap);
+    
 }
 
 .key-features-list {
     margin-top: 0.75em;
+    flex-grow: 1;
+    justify-content: space-around;
 }
 
 .key-item-styling {
@@ -86,15 +91,14 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    column-gap: var(--list-card-content-gap);
-    row-gap: var(--list-card-row-gap);
+    gap: var(--list-card-row-gap);
 }
 
 .price {
     flex-shrink: 0;
 }
 
-@container(max-width: 40ch) {
+@container(max-width: 38ch) {
     .price-item .button {
         padding: 0.75em 6cqw !important;
         min-width: 9ch;
