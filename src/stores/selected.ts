@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
+import { type SelectedBillingCycle } from './cycles.ts'
 
 /**
  *  Price plan selected interface
@@ -7,7 +8,7 @@ import { ref, type Ref } from 'vue'
 
 export interface SelectedData {
   plan: number
-  pricing: 'monthly' | 'quarterly' | 'yearly'
+  pricing: SelectedBillingCycle['type']
 }
 
 /**
@@ -45,7 +46,9 @@ export const useSelectedStore = defineStore('selected', () => {
 
     if (samePlanSelected(data)) {
       selectedPlans.value = (selectedPlans.value as SelectedData[]).filter(
-        (selected) => selected.plan !== data.plan
+        (selected) =>
+          selected.plan !== data.plan &&
+          selected.pricing.toLowerCase() === data.pricing.toLowerCase(),
       )
       return
     }

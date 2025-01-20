@@ -4,6 +4,10 @@ import { type Plan } from '../../stores/plans.ts'
 import { useSelectedStore, type SelectedData } from '../../stores/selected.ts'
 import KeyFeature from './KeyFeature.vue'
 
+/**
+ * Props
+ */
+
 const props = defineProps<{
   data: Plan
 }>()
@@ -77,38 +81,26 @@ function buttonClickData(e: Event): SelectedData|void {
 
   return clickedItemData
 }
+
+const priceOutput = monthly.outputs.totalOutput;
+
 </script>
 
 <template>
   <li class="list-item-styling">
-    <h2 class="title text-color-1">{{ title }}</h2>
-    <h4 class="description">{{ description }}</h4>
+    <div class="title-price-description-button-container">
+      <h3 class="title text-color-1">{{ title }}</h3>
+      <div class="price-container">
+        <h4 class="price">{{ priceOutput }} <small>per month</small></h4>
+        <p class="discount">10% discount ($100 monthly savings)</p>
+      </div>
+      <p class="description">{{ description }}</p>
+      <button class="button">Select Plan</button>
+    </div>
     <hr />
     <h4 class="key-features-heading">Key Features</h4>
     <ul class="key-features-list">
       <KeyFeature v-for="item in keyFeatures" :key="item.id" :data="item" />
-    </ul>
-    <hr />
-    <h4 class="prices-heading"><strong>Pricing Plans</strong></h4>
-    <ul class="prices-list">
-      <li class="price-item">
-        <h5 class="monthly-amount price">{{ monthly.outputs.totalOutput }} / monthly</h5>
-        <button @click="priceSelect" :class="[{ 'button-highlight': priceAlreadySelected('monthly') }, 'button button-highlight-hover']" data-price="monthly">
-          {{ priceAlreadySelected('monthly') ? 'Selected' : 'Select' }}
-        </button>
-      </li>
-      <li class="price-item">
-        <h5 class="quarterly-amount price">{{ quarterly.outputs.totalOutput }} / quarterly</h5>
-        <button @click="priceSelect" :class="[{ 'button-highlight': priceAlreadySelected('quarterly') }, 'button button-highlight-hover']" data-price="quarterly">
-          {{ priceAlreadySelected('quarterly') ? 'Selected' : 'Select' }}
-        </button>
-      </li>
-      <li class="price-item">
-        <h5 class="yearly-amount price">{{ yearly.outputs.totalOutput }} / yearly</h5>
-        <button @click="priceSelect" :class="[{ 'button-highlight': priceAlreadySelected('yearly') }, 'button button-highlight-hover']" data-price="yearly">
-          {{ priceAlreadySelected('yearly') ? 'Selected' : 'Select' }}
-        </button>
-      </li>
     </ul>
   </li>
 </template>

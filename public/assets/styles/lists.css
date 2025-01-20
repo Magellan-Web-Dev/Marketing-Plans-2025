@@ -5,10 +5,10 @@
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    font-size: inherit;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  font-size: inherit;
 }
 
 .lists-layouts {
@@ -18,10 +18,10 @@ ul {
 }
 
 .list-layout {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--list-card-gap);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--list-card-gap);
 }
 
 .list-item-styling {
@@ -35,13 +35,26 @@ ul {
 }
 
 .list-item-styling :is(h2, h3, h4, .description, .key-features, .price) {
-    text-align: center;
-    text-wrap: balance;
-    font-weight: 500;
+  text-align: center;
+  text-wrap: balance;
+  font-weight: 500;
 }
 
-.list-item-styling .description {
-    margin-top: 0.5em;
+.list-item-styling .title-price-description-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  min-height: 17em;
+  align-items: center;
+}
+
+.list-item-styling .discount {
+  text-align: center;
+}
+
+.list-items-styling .description {
+    margin-top: auto;
 }
 
 .list-item-styling hr {
@@ -51,37 +64,36 @@ ul {
   margin: 1em 0;
 }
 
-.key-features-list, .prices-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--list-card-content-gap);
-    
+.key-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-card-content-gap);
 }
 
 .key-features-list {
-    margin-top: 0.75em;
-    flex-grow: 1;
-    justify-content: space-around;
+  margin-top: 0.75em;
+  flex-grow: 1;
+  justify-content: space-around;
 }
 
 .key-item-styling {
-    display: flex;
-    align-items: start;
-    gap: var(--list-card-content-gap);
+  display: flex;
+  align-items: start;
+  gap: var(--list-card-content-gap);
 }
 
 .key-item-styling::before {
-    content: '';
-    background: url('/applications/apps/client_use/marketing_plans/assets/icons/checkmark.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-    margin-top: 0.125em;
+  content: '';
+  background: url('/applications/apps/client_use/marketing_plans/assets/icons/checkmark.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  margin-top: 0.125em;
 }
 
-.prices-list {
+/* .prices-list {
     margin-top: 1.5em;
     container-type: inline-size;
     row-gap: var(--list-card-row-gap);
@@ -103,4 +115,4 @@ ul {
         padding: 0.75em 6cqw !important;
         min-width: 9ch;
     }
-}
+} */
