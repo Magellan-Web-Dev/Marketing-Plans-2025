@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { onMounted } from 'vue'
 import { type SelectedBillingCycle, useCyclesStore } from '../../stores/cycles.ts'
 
 /**
@@ -12,6 +13,14 @@ const props = defineProps<{
 }>()
 
 const { planGroup, planType } = props
+
+/**
+ * Set starting billing cycle to 'monthly' when component loads
+ */
+
+onMounted(() => {
+  buttonClickBillingCycle('monthly')
+})
 
 /**
  * Billing cycle option click handler
@@ -53,9 +62,12 @@ function billingCycleSelected(type: SelectedBillingCycle['type']): boolean|void 
 </script>
 
 <template>
-  <div class="billing-cycles-options-container">
-    <button @click="buttonClickBillingCycle('monthly')" :class="{'cycle-active': billingCycleSelected('monthly')}">Monthly</button>
-    <button @click="buttonClickBillingCycle('quarterly')" :class="{'cycle-active': billingCycleSelected('quarterly')}">Quarterly</button>
-    <button @click="buttonClickBillingCycle('yearly')" :class="{'cycle-active': billingCycleSelected('yearly')}">Yearly</button>
+  <div class="billing-cycle-container">
+    <h2 class="select-billing-cycle-text text-align-center">Select billing cycle</h2>
+    <div class="billing-cycles-options-container">
+      <button @click="buttonClickBillingCycle('monthly')" :class="[{'button-billing-cycle-active': billingCycleSelected('monthly')}, 'button-billing-cycle']">Monthly</button>
+      <button @click="buttonClickBillingCycle('quarterly')" :class="[{'button-billing-cycle-active': billingCycleSelected('quarterly')}, 'button-billing-cycle']">Quarterly</button>
+      <button @click="buttonClickBillingCycle('yearly')" :class="[{'button-billing-cycle-active': billingCycleSelected('yearly')}, 'button-billing-cycle']">Yearly</button>
+    </div>
   </div>
 </template>

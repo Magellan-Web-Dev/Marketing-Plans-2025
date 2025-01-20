@@ -8,7 +8,7 @@ import { ref, type Ref } from 'vue'
 export interface SelectedBillingCycle {
   type: 'monthly' | 'quarterly' | 'yearly'
   planGroup: number
-  planType: 'dollar Plan' | 'focus plan'
+  planType: 'dollar plan' | 'focus plan'
 }
 
 /**
@@ -45,7 +45,6 @@ export const useCyclesStore = defineStore('cycles', () => {
     data.planGroup = Number(data.planGroup) as SelectedBillingCycle['planGroup']
     data.planType = data.planType.toLowerCase() as SelectedBillingCycle['planType']
 
-
     /**
      * Check that there are no plan groups selected with the same plan type with just a different billing cycle to avoid duplicate cycle selection.
      * If such a duplicate is found, then change the billing cycle only, otherwise add it to selectedBillingCycles array
@@ -64,13 +63,11 @@ export const useCyclesStore = defineStore('cycles', () => {
             ? { type: data.type, planGroup: data.planGroup, planType: data.planType }
             : selected,
       )
-      return
     }
 
-    // If the plan group and plan type do no exist in selectedBillingCycles, add it
+    // If the plan group and plan type do not exist in selectedBillingCycles, add it
 
     selectedBillingCycles.value = [...selectedBillingCycles.value, data] as SelectedBillingCycle[]
-
   }
 
   /**
@@ -91,5 +88,31 @@ export const useCyclesStore = defineStore('cycles', () => {
     )
   }
 
-  return { selectedBillingCycles, clickedBillingCycleHandler, billingCyclePlanGroupTypeSelected }
+  /**
+   * Return what billing cycle is currently selected for a group of plans being either dollar or focus plans
+   *
+   * @param planGroup - SelectedBillingCycle['planGroup']
+   * @param planType - SelectedBillingCycle['planType']
+   *
+   * @return SelectedBillingCycle['type]
+   */
+
+  function currentPlansGroupBillingTypeSelected(planGroup: SelectedBillingCycle['planGroup'],
+    planType: SelectedBillingCycle['planType']): SelectedBillingCycle['type'] {
+
+      planGroup = Number(planGroup) as SelectedBillingCycle['planGroup']
+      planType = planType.toLowerCase() as SelectedBillingCycle['planType']
+
+      const selectedCycle = (selectedBillingCycles.value as SelectedBillingCycle[]).find(cycle =>
+        cycle.planGroup === planGroup && cycle.planType === planType
+      )
+
+      if (selectedCycle) {
+        return selectedCycle.type
+      }
+
+      else return 'monthly'
+  }
+
+  return { selectedBillingCycles, clickedBillingCycleHandler, billingCyclePlanGroupTypeSelected, currentPlansGroupBillingTypeSelected }
 })

@@ -2,6 +2,7 @@
   --list-card-gap: 2.5em;
   --list-card-content-gap: 0.5em;
   --list-card-row-gap: 1em;
+  --border-thickness-1: 0.25em;
 }
 
 ul {
@@ -11,11 +12,12 @@ ul {
   font-size: inherit;
 }
 
-.lists-layouts {
+/* .lists-layouts {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--list-card-gap);
-}
+} */
 
 .list-layout {
   display: flex;
@@ -26,7 +28,7 @@ ul {
 
 .list-item-styling {
   padding: var(--vertical-padding-2) var(--side-padding-2);
-  border: 3px var(--color-1) solid;
+  border: var(--border-thickness-1) var(--color-1) solid;
   flex: 1 1 var(--content-text-small);
   max-width: var(--content-text-normal);
   background: var(--overlay-2);
@@ -54,7 +56,7 @@ ul {
 }
 
 .list-items-styling .description {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .list-item-styling hr {
@@ -93,26 +95,41 @@ ul {
   margin-top: 0.125em;
 }
 
-/* .prices-list {
-    margin-top: 1.5em;
-    container-type: inline-size;
-    row-gap: var(--list-card-row-gap);
+.billing-cycle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--vertical-padding-3);
+  width: var(--content-text-normal);
+  margin: 0 auto;
 }
 
-.price-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--list-card-row-gap);
+.billing-cycle-container:not(:first-child) {
+  margin-top: var(--vertical-padding-1);
 }
 
-.price {
-    flex-shrink: 0;
+.billing-cycles-options-container {
+  align-self: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--overlay-2);
+  border: var(--border-thickness-1) var(--color-1) solid;
 }
 
-@container(max-width: 38ch) {
-    .price-item .button {
-        padding: 0.75em 6cqw !important;
-        min-width: 9ch;
-    }
-} */
+.select-plan-text {
+  margin: var(--vertical-padding-2) 0 var(--vertical-padding-3);
+}
+
+.price-container .discount {
+  transition: var(--transition-default);
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+.price-container .show-discount {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+}

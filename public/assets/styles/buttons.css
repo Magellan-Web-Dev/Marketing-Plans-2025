@@ -8,8 +8,6 @@
 }
 
 .button {
-  cursor: pointer;
-  padding: 1.375em 2em;
   background: url('/assets/images/MAG-Web_Button_Over.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,14 +17,25 @@
   min-width: min(20ch, 100%);
 }
 
+.button, .button-billing-cycle {
+  cursor: pointer;
+  padding: 1.375em;
+  min-width: min(20ch, 100%);
+  position: relative;
+}
+
+.billing-cycles-options-container {
+  position: relative;
+}
+
 .button::before {
   content: '';
   position: absolute;
   top: var(--border-thickness-1);
   left: var(--border-thickness-1);
+  background: var(--color-3);
   width: calc(100% - calc(var(--border-thickness-1) * 2));
   height: calc(100% - calc(var(--border-thickness-1) * 2));
-  background: var(--color-3);
   z-index: -1;
   transition: var(--transition-default);
 }
@@ -34,4 +43,15 @@
 .button-highlight-hover:hover::before,
 .button-highlight::before {
   opacity: 0;
+}
+
+.button-billing-cycle {
+  border: 0px transparent solid;
+  flex-shrink: 0;
+  background: transparent;
+  transition: var(--transition-default);
+}
+
+.button-billing-cycle-active {
+  background: var(--color-1) !important;
 }

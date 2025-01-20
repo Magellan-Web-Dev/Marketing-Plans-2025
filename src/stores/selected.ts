@@ -16,6 +16,7 @@ export interface SelectedData {
  */
 
 export const useSelectedStore = defineStore('selected', () => {
+
   /**
    * Selected Plans
    * Collects plans that were selected and their pricing into an array
