@@ -8,7 +8,7 @@ import { ref, type Ref } from 'vue'
 export interface SelectedBillingCycle {
   type: 'monthly' | 'quarterly' | 'yearly'
   planGroup: number
-  planType: 'Dollar Plan' | 'Focus Plan'
+  planType: 'dollar Plan' | 'focus plan'
 }
 
 /**
@@ -42,9 +42,9 @@ export const useCyclesStore = defineStore('cycles', () => {
     }
 
     data.type = data.type.toLowerCase() as SelectedBillingCycle['type']
-    data.planType = data.type.toLowerCase() as SelectedBillingCycle['planType']
+    data.planGroup = Number(data.planGroup) as SelectedBillingCycle['planGroup']
+    data.planType = data.planType.toLowerCase() as SelectedBillingCycle['planType']
 
-    console.log(data)
 
     /**
      * Check that there are no plan groups selected with the same plan type with just a different billing cycle to avoid duplicate cycle selection.
@@ -71,8 +71,25 @@ export const useCyclesStore = defineStore('cycles', () => {
 
     selectedBillingCycles.value = [...selectedBillingCycles.value, data] as SelectedBillingCycle[]
 
-    console.log(selectedBillingCycles.value)
   }
 
-  return { selectedBillingCycles, clickedBillingCycleHandler }
+  /**
+   * Check if same billing cycle for same plan group and type has been selected
+   *
+   * @param data - SelectedBillingCycle
+   *
+   * @return boolean
+   */
+
+  function billingCyclePlanGroupTypeSelected(data: SelectedBillingCycle): boolean {
+    data.type = data.type.toLowerCase() as SelectedBillingCycle['type']
+    data.planGroup = Number(data.planGroup) as SelectedBillingCycle['planGroup']
+    data.planType = data.planType.toLowerCase() as SelectedBillingCycle['planType']
+
+    return (selectedBillingCycles.value as SelectedBillingCycle[]).some(selected =>
+      selected.type === data.type && selected.planGroup === data.planGroup && selected.planType === data.planType
+    )
+  }
+
+  return { selectedBillingCycles, clickedBillingCycleHandler, billingCyclePlanGroupTypeSelected }
 })

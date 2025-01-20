@@ -4,7 +4,7 @@
     "dollarPlans": [
       {
         "id": 1,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$1 Million Dollar Plan",
         "monthlyPrice": 2175,
         "quarterlyDiscount": 0.1,
@@ -47,7 +47,7 @@
       },
       {
         "id": 2,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$3 Million Dollar Plan",
         "monthlyPrice": 4500,
         "quarterlyDiscount": 0,
@@ -102,7 +102,7 @@
       },
       {
         "id": 3,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$5 Million Dollar Plan",
         "monthlyPrice": 7500,
         "quarterlyDiscount": 0.1,
@@ -163,7 +163,7 @@
       },
       {
         "id": 4,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$10 Million Dollar Plan",
         "monthlyPrice": 11500,
         "quarterlyDiscount": 0,
@@ -230,7 +230,7 @@
       },
       {
         "id": 5,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$15 Million Dollar Plan",
         "monthlyPrice": 20000,
         "quarterlyDiscount": 0,
@@ -299,7 +299,7 @@
     "focusPlans": [
       {
         "id": 6,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Public Relations Plan",
         "monthlyPrice": 3000,
         "quarterlyDiscount": 0.1,
@@ -335,7 +335,7 @@
       },
       {
         "id": 7,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Social Media Management Plan",
         "monthlyPrice": 1200,
         "quarterlyDiscount": 0.1,
@@ -371,7 +371,7 @@
       },
       {
         "id": 8,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Appointment-Ready Leads",
         "monthlyPrice": 2000,
         "quarterlyDiscount": 0.1,
@@ -418,7 +418,7 @@
       },
       {
         "id": 9,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Complete SEO Optimization Plan",
         "monthlyPrice": 1500,
         "quarterlyDiscount": 0.1,
@@ -459,7 +459,7 @@
     "dollarPlans": [
       {
         "id": 10,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$1 Million Dollar Plan",
         "monthlyPrice": 2175,
         "quarterlyDiscount": 0,
@@ -502,7 +502,7 @@
       },
       {
         "id": 11,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$5 Million Dollar Plan",
         "monthlyPrice": 7500,
         "quarterlyDiscount": 0,
@@ -563,7 +563,7 @@
       },
       {
         "id": 12,
-        "type": "Dollar Plan",
+        "type": "dollar plan",
         "title": "$20 Million Dollar Plan",
         "monthlyPrice": 20000,
         "quarterlyDiscount": 0,
@@ -632,7 +632,7 @@
     "focusPlans": [
       {
         "id": 13,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Public Relations Plan",
         "monthlyPrice": 3000,
         "quarterlyDiscount": 0.1,
@@ -668,7 +668,7 @@
       },
       {
         "id": 14,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Social Media Management Plan",
         "monthlyPrice": 1200,
         "quarterlyDiscount": 0.1,
@@ -704,7 +704,7 @@
       },
       {
         "id": 15,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Appointment-Ready Leads",
         "monthlyPrice": 2000,
         "quarterlyDiscount": 0.1,
@@ -755,7 +755,7 @@
       },
       {
         "id": 16,
-        "type": "Focus Plan",
+        "type": "focus plan",
         "title": "Complete SEO Optimization Plan",
         "monthlyPrice": 1500,
         "quarterlyDiscount": 0.1,
