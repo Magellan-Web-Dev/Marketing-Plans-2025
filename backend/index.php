@@ -1,29 +1,38 @@
 <?php
 
 /**
+ * Start session
+ * Makes sure sessions are secure and over http only and samesite
+ */
+
+    ini_set('session.cookie_secure', 1);
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_samesite', 'Lax');
+
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+
+/**
  * Declare base directory and includes directory constants
  */
 
     define("BASE_DIR", __DIR__);
     define ("INCLUDES_DIR", BASE_DIR . '/includes' );
 
-/**
- * Initialize PSR-4 autoloader for autoloading classes.
- */
-
-    require_once BASE_DIR . '/vendor/autoload.php';
 
 /**
  * Load environment variables from .env file.
  */
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
+
+    require_once INCLUDES_DIR . '/Env.php';
+    ENV::load(BASE_DIR . '/.env');
 
 /**
  * Load Remaining variable constants declarations.
  */
 
-    require_once INCLUDES_DIR . '/constants.php';
+    require_once INCLUDES_DIR . '/Constants.php';
 
 /**
  * Check that site is secure in production environment (over HTTPS).  
@@ -40,8 +49,27 @@
     }
 
 /**
- * If SECURE constant variable is true, load application.
+ * File access authentication.  Used to protect against direct access to files for the app without being authenticated.  
+ * Skipped if no specific file is requested other than the base url
+ * IMPORTANT - The server must be configured for all url requests other than the base url to be redirected with a file url query of the requested path
+ * Example.  Url https://www.partnerwithmagellan.com/applications/apps/client_use/marketing_plans/assets/images/AdobeStock_354130260.webp will be directed as https://www.partnerwithmagellan.com/applications/apps/internal_use/sales_calculator?file=assets/images/AdobeStock_354130260.webp for the $_GET['file'] to be assets/images/AdobeStock_354130260.webp
+ * The code runs on an apache server, and there is a .htaccess file that handles this url query directing.
+ */
+
+require_once INCLUDES_DIR . '/FileAccessAuth.php';
+
+FileAccessAuth::authenticate(
+    BASE_DIR, 
+    SESSION_NAME, 
+    FORBIDDEN_FILE_EXTENSIONS, 
+    UNAUTHORIZED_REDIRECT_URL
+);
+
+/**
+ * If SECURE constant variable is true, set session and load application.
  */ 
+
+    $_SESSION[SESSION_NAME] = true;
 
     readfile(APP_FILE);
     exit;

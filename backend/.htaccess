@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     # Enable Rewrite Engine
     RewriteEngine On
-    RewriteBase /
+    RewriteBase /applications/apps/client_use/marketing_plans/
 
     # Deny access to .env files
     <FilesMatch "^\.env$">
@@ -12,6 +12,6 @@
     Options -Indexes
 
     # Redirect all valid files and subfolders through index.php
-    RewriteCond %{REQUEST_URI} !^/index\.php$
-    RewriteRule ^(.*)$ /index.php?file=$1 [QSA,L]
+    RewriteCond %{REQUEST_URI} !^/applications/apps/client_use/marketing_plans/index\.php$
+    RewriteRule ^(.*)$ /applications/apps/client_use/marketing_plans/index.php?file=$1 [QSA,L]
 </IfModule>
