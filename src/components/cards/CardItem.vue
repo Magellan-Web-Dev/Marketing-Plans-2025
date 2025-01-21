@@ -150,7 +150,7 @@ const anotherSiblingPlanPriceTypeSelected: ComputedRef<boolean | void> = compute
       <button
         :tabindex="anotherSiblingPlanPriceTypeSelected ? -1 : 0"
         @click="priceSelect"
-        :class="[{ 'button-highlight': priceAlreadySelected }, 'button']"
+        :class="[{ 'button-highlight': priceAlreadySelected }, 'button button-highlight-hover']"
         :data-price="cycleSelected"
       >
         {{ priceAlreadySelected ? `Selected Plan` : `Select Plan` }}
