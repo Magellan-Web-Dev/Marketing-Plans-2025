@@ -4,7 +4,7 @@ import { onMounted } from 'vue'
 import { usePlansStore } from './stores/plans.ts'
 import LoadingSpinner from './components/LoadingSpinner.vue'
 import LoadingError from './components/LoadingError.vue'
-import MainComponent from './components/MainComponent.vue'
+import HomeView from './views/HomeView.vue'
 
 const loading = ref<boolean>(true)
 const removeSpinner = ref<boolean>(false)
@@ -49,7 +49,7 @@ onMounted(async(): Promise<void> => {
 <template>
   <main :class="[{ loading: loading }, 'background-style-1']">
     <LoadingSpinner v-if="!removeSpinner" />
-    <MainComponent v-if="!errorLoading && !loading" />
+    <HomeView v-if="!errorLoading && !loading" />
     <LoadingError v-if="errorLoading" />
   </main>
 </template>
