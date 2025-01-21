@@ -47,7 +47,7 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   gap: 1em;
-  min-height: 18em;
+  min-height: 19em;
   align-items: center;
 }
 
@@ -133,7 +133,7 @@ ul {
 }
 
 .price-container .show-discount {
-    height: auto;
-    visibility: visible;
-    opacity: 1;
+  height: auto;
+  visibility: visible;
+  opacity: 1;
 }

@@ -43,7 +43,6 @@ export const useSelectedStore = defineStore('selected', () => {
    */
 
   function togglePlanSelection(data: SelectedData): void {
-
     if (!validateData(data)) {
       console.error(
         `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a cycle key with a 'monthly', 'quarterly', or 'yearly' value, along with the planGroup id and planType`,
@@ -57,15 +56,24 @@ export const useSelectedStore = defineStore('selected', () => {
 
     if (isPlanSelected(data)) {
       selectedPlans.value = (selectedPlans.value as SelectedData[]).filter(
-        (selected) =>
-          selected.plan !== data.plan && selected.cycle.toLowerCase() === data.cycle.toLowerCase(),
-      )
+        (selected) => {
+          if (selected.plan === data.plan
+            && selected.cycle.toLowerCase() === data.cycle.toLowerCase()
+            && selected.planGroup === data.planGroup
+            && selected.planType.toLowerCase() === data.planType.toLowerCase()) {
+              return false
+            }
+          return true
+      })
       return
     }
 
     // If the clickedPrice item was not already selected, add it to the selectedPlans array
 
-    selectedPlans.value = [...(selectedPlans.value as SelectedData[]), data]
+    if (!isPlanSelected(data)) {
+      selectedPlans.value.push(data)
+    }
+
   }
 
   /**
@@ -85,7 +93,11 @@ export const useSelectedStore = defineStore('selected', () => {
       return
     }
     const samePlanSelected: boolean = selectedPlans.value.some(
-      (p: SelectedData) => p.plan === Number(data.plan) && p.cycle === data.cycle.toLowerCase(),
+      (p: SelectedData) =>
+        p.plan === Number(data.plan) &&
+        p.cycle.toLowerCase() === data.cycle.toLowerCase() &&
+        p.planGroup === data.planGroup &&
+        p.planType.toLowerCase() === data.planType.toLowerCase(),
     )
 
     return samePlanSelected
