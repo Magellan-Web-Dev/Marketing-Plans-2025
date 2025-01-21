@@ -29,15 +29,15 @@ onMounted(() => {
  * @return void
  */
 
-function buttonClickBillingCycle(type: SelectedBillingCycle['type']): void {
-  if (type !== 'monthly' && type !== 'quarterly' && type !== 'yearly') {
+function buttonClickBillingCycle(cycle: SelectedBillingCycle['cycle']): void {
+  if (cycle !== 'monthly' && cycle !== 'quarterly' && cycle !== 'yearly') {
     console.error(
       `Cycle parameter must have a value of 'monthly', 'quarterly', or 'yearly' for the buttonClickBillingCycle function`,
     )
     return
   }
 
-  const data = { type, planGroup, planType }
+  const data = { cycle, planGroup, planType }
 
   useCyclesStore().clickedBillingCycleHandler(data)
 }
@@ -49,14 +49,14 @@ function buttonClickBillingCycle(type: SelectedBillingCycle['type']): void {
  * @return boolean
  */
 
-function billingCycleSelected(type: SelectedBillingCycle['type']): boolean|void {
-  if (type !== 'monthly' && type !== 'quarterly' && type !== 'yearly') {
+function billingCycleSelected(cycle: SelectedBillingCycle['cycle']): boolean|void {
+  if (cycle !== 'monthly' && cycle !== 'quarterly' && cycle !== 'yearly') {
     console.error(
       `Cycle parameter must have a value of 'monthly', 'quarterly', or 'yearly' for the billingCycleSelected function`,
     )
     return
   }
-  const data = { type, planGroup, planType }
+  const data = { cycle, planGroup, planType }
   return useCyclesStore().billingCyclePlanGroupTypeSelected(data)
 }
 </script>

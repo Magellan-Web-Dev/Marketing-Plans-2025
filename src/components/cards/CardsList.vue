@@ -18,7 +18,7 @@ const { id, dollarPlans, focusPlans } = props.data
 
 <template>
   <BillingCycleOptions :planGroup="id" planType="dollar plan" />
-  <h2 class="select-plan-text text-align-center text-wrap-balance">Select Dollar Plan</h2>
+  <h2 class="select-plan-text text-align-center text-wrap-balance">Select Your Dollar Plan</h2>
   <ul class="list-layout">
     <CardItem
       v-for="item in dollarPlans"
@@ -29,7 +29,7 @@ const { id, dollarPlans, focusPlans } = props.data
     />
   </ul>
   <BillingCycleOptions :planGroup="id" planType="focus plan" />
-  <h2 class="select-plan-text text-align-center text-wrap-balance">Select Focus Plan</h2>
+  <h2 class="select-plan-text text-align-center text-wrap-balance">Select Your Focus Plan</h2>
   <ul class="list-layout">
     <CardItem
       v-for="item in focusPlans"

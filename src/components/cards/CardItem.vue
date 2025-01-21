@@ -26,8 +26,8 @@ const { planGroup, planType } = props
 
 const cyclesStore = useCyclesStore()
 
-const cycleSelected: ComputedRef<SelectedBillingCycle['type']> = computed(() =>
-  cyclesStore.currentPlansGroupBillingTypeSelected(planGroup, planType)
+const cycleSelected: ComputedRef<SelectedBillingCycle['cycle']> = computed(() =>
+  cyclesStore.currentPlansGroupBillingTypeSelected(planGroup, planType),
 )
 
 const outputNumbers: ComputedRef<Calculations> = computed(
@@ -56,9 +56,11 @@ function priceSelect(e: Event): void {
 function priceAlreadySelected(): boolean | void {
   const clickedItemData: SelectedData = {
     plan: id,
-    pricing: cycleSelected.value,
+    cycle: cycleSelected.value,
+    planGroup,
+    planType,
   }
-return useSelectedStore().samePlanSelected(clickedItemData)
+  return useSelectedStore().samePlanSelected(clickedItemData)
 }
 
 /**
@@ -75,11 +77,11 @@ function buttonClickData(e: Event): SelectedData | void {
 
   // Get data price attribute value
 
-  const pricing: string = htmlButton.dataset.price ? htmlButton.dataset.price.toLowerCase() : ''
+  const cycle = htmlButton.dataset.price ? htmlButton.dataset.price.toLowerCase() : ''
 
   // Check that priceType is a valid type
 
-  if (pricing !== 'monthly' && pricing !== 'quarterly' && pricing !== 'yearly') {
+  if (cycle !== 'monthly' && cycle !== 'quarterly' && cycle !== 'yearly') {
     console.error(
       `Price button must have a data attribute of 'price' with a value of 'monthly', 'quarterly', or 'yearly'`,
     )
@@ -88,31 +90,65 @@ function buttonClickData(e: Event): SelectedData | void {
 
   const clickedItemData: SelectedData = {
     plan: id,
-    pricing,
+    cycle,
+    planGroup,
+    planType,
   }
 
   return clickedItemData
 }
+
+/**
+ * Checks if another plan within the same plan type under the same plan group id with the same cycle type has already been selected.
+ *
+ * @return boolean
+ */
+
+function anotherSiblingPlanPriceTypeSelected(): boolean {
+  const plansSelected = useSelectedStore().selectedPlans as SelectedData[]
+
+  // Check of other sibling plans have been selected under the same billing cycle
+
+  const anotherSiblingPlanSelected: boolean = plansSelected.some(
+    (plan) =>
+      plan.planGroup === planGroup &&
+      plan.planType === planType &&
+      plan.cycle === cycleSelected.value,
+  )
+
+  // Check that current card wasn't selected to avoid disabling card that is selected
+
+  const currentPlanSelected: boolean = plansSelected.some((plan) => plan.plan === id)
+
+  // Check that selected billing cycle didn't change
+
+  return anotherSiblingPlanSelected && !currentPlanSelected
+}
 </script>
 
 <template>
-  <li class="list-item-styling">
+  <li
+    :class="[{ 'disable-list-item': anotherSiblingPlanPriceTypeSelected() }, 'list-item-styling']"
+  >
     <div class="title-price-description-button-container">
       <h3 class="title text-color-1">{{ title }}</h3>
       <div class="price-container">
         <h4 class="price">{{ outputNumbers.outputs.monthlyOutput }} <small>per month</small></h4>
         <p :class="[{ 'show-discount': outputNumbers.hasDiscount }, 'discount']">
-          {{ outputNumbers.outputs.discountOutput }} discount
-          ({{ outputNumbers.outputs.savingsOutput }} savings)
+          {{ outputNumbers.outputs.discountOutput }} discount ({{
+            outputNumbers.outputs.savingsOutput
+          }}
+          savings)
         </p>
       </div>
       <p class="description">{{ description }}</p>
       <button
+        :tabindex="anotherSiblingPlanPriceTypeSelected() ? -1 : 0"
         @click="priceSelect"
         :class="[{ 'button-highlight': priceAlreadySelected() }, 'button']"
         :data-price="cycleSelected"
       >
-        Select Plan
+        {{ priceAlreadySelected() ? `Selected Plan` : `Select Plan` }}
       </button>
     </div>
     <hr />

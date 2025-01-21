@@ -8,18 +8,19 @@ import { type SelectedBillingCycle } from './cycles.ts'
 
 export interface SelectedData {
   plan: number
-  pricing: SelectedBillingCycle['type']
+  cycle: SelectedBillingCycle['cycle']
+  planGroup: number
+  planType: SelectedBillingCycle['planType']
 }
 
 /**
- * State store for collecting selected price plans and corresponding pricing
+ * State store for collecting selected price plans and corresponding cycle
  */
 
 export const useSelectedStore = defineStore('selected', () => {
-
   /**
    * Selected Plans
-   * Collects plans that were selected and their pricing into an array
+   * Collects plans that were selected and their cycle into an array
    */
 
   const selectedPlans: Ref<SelectedData[]> = ref([])
@@ -34,9 +35,9 @@ export const useSelectedStore = defineStore('selected', () => {
    */
 
   function clickedPriceHandler(data: SelectedData): void {
-    if (!data || !data.plan || !data.pricing) {
+    if (!data || !data.plan || !data.cycle || !data.planGroup || !data.planType) {
       console.error(
-        `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a pricing key with a 'monthly', 'quarterly', or 'yearly' value`,
+        `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a cycle key with a 'monthly', 'quarterly', or 'yearly' value, along with the planGroup id and planType`,
       )
       return
     }
@@ -48,19 +49,20 @@ export const useSelectedStore = defineStore('selected', () => {
     if (samePlanSelected(data)) {
       selectedPlans.value = (selectedPlans.value as SelectedData[]).filter(
         (selected) =>
-          selected.plan !== data.plan &&
-          selected.pricing.toLowerCase() === data.pricing.toLowerCase(),
+          selected.plan !== data.plan && selected.cycle.toLowerCase() === data.cycle.toLowerCase(),
       )
+      console.log(selectedPlans.value)
       return
     }
 
     // If the clickedPrice item was not already selected, add it to the selectedPlans array
 
     selectedPlans.value = [...(selectedPlans.value as SelectedData[]), data]
+    console.log(selectedPlans.value)
   }
 
   /**
-   * Determines is the same plan and pricing has already been selected.
+   * Determines is the same plan and cycle has already been selected.
    * If selectedPlans contains same clicked data, it is removed
    *
    * @param data - SelectedData
@@ -69,14 +71,14 @@ export const useSelectedStore = defineStore('selected', () => {
    */
 
   function samePlanSelected(data: SelectedData): boolean | void {
-    if (!data || !data.plan || !data.pricing) {
+    if (!data || !data.plan || !data.cycle) {
       console.error(
-        `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a pricing key with a 'monthly', 'quarterly', or 'yearly' value`,
+        `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a cycle key with a 'monthly', 'quarterly', or 'yearly' value`,
       )
       return
     }
     const samePlanSelected: boolean = selectedPlans.value.some(
-      (p: SelectedData) => p.plan === Number(data.plan) && p.pricing === data.pricing.toLowerCase(),
+      (p: SelectedData) => p.plan === Number(data.plan) && p.cycle === data.cycle.toLowerCase(),
     )
 
     return samePlanSelected
