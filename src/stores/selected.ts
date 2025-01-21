@@ -26,16 +26,25 @@ export const useSelectedStore = defineStore('selected', () => {
   const selectedPlans: Ref<SelectedData[]> = ref([])
 
   /**
-   * Collects clicked data and stores it in selectedPlans state array.
-   * If selectedPlans contains same clicked data, it is removed
+   * Validates the data object for required properties.
    *
    * @param data - SelectedData
+   * @return true if valid, false otherwise
+   */
+  function validateData(data: SelectedData): boolean {
+    return !!(data && data.plan && data.cycle && data.planGroup && data.planType)
+  }
+
+  /**
+   * Toggles the selection of a price plan. If the same plan and cycle are selected, it removes them.
    *
+   * @param data - SelectedData
    * @return void
    */
 
-  function clickedPriceHandler(data: SelectedData): void {
-    if (!data || !data.plan || !data.cycle || !data.planGroup || !data.planType) {
+  function togglePlanSelection(data: SelectedData): void {
+
+    if (!validateData(data)) {
       console.error(
         `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a cycle key with a 'monthly', 'quarterly', or 'yearly' value, along with the planGroup id and planType`,
       )
@@ -46,19 +55,17 @@ export const useSelectedStore = defineStore('selected', () => {
 
     // Check if the same plan and price has already been selected.
 
-    if (samePlanSelected(data)) {
+    if (isPlanSelected(data)) {
       selectedPlans.value = (selectedPlans.value as SelectedData[]).filter(
         (selected) =>
           selected.plan !== data.plan && selected.cycle.toLowerCase() === data.cycle.toLowerCase(),
       )
-      console.log(selectedPlans.value)
       return
     }
 
     // If the clickedPrice item was not already selected, add it to the selectedPlans array
 
     selectedPlans.value = [...(selectedPlans.value as SelectedData[]), data]
-    console.log(selectedPlans.value)
   }
 
   /**
@@ -70,7 +77,7 @@ export const useSelectedStore = defineStore('selected', () => {
    * @return void
    */
 
-  function samePlanSelected(data: SelectedData): boolean | void {
+  function isPlanSelected(data: SelectedData): boolean | void {
     if (!data || !data.plan || !data.cycle) {
       console.error(
         `Invalid data passed into clickedPriceHandler method in selected store.  Data must contain a plan with a numeric id and a cycle key with a 'monthly', 'quarterly', or 'yearly' value`,
@@ -86,5 +93,5 @@ export const useSelectedStore = defineStore('selected', () => {
 
   // Return state and methods
 
-  return { selectedPlans, clickedPriceHandler, samePlanSelected }
+  return { selectedPlans, togglePlanSelection, isPlanSelected }
 })

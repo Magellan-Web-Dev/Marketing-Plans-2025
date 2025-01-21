@@ -25,6 +25,21 @@ export const useCyclesStore = defineStore('cycles', () => {
   const selectedBillingCycles: Ref<SelectedBillingCycle[]> = ref([])
 
   /**
+   * Helper function for making sure data parameters are parsed correctly
+   *
+   * @param data - SelectedBillingCycle
+   * @return SelectedBillingCycle
+   */
+
+  function normalizeBillingCycle(data: SelectedBillingCycle): SelectedBillingCycle {
+    return {
+      cycle: data.cycle.toLowerCase() as SelectedBillingCycle['cycle'],
+      planGroup: Number(data.planGroup) as SelectedBillingCycle['planGroup'],
+      planType: data.planType.toLowerCase() as SelectedBillingCycle['planType'],
+    }
+  }
+
+  /**
    * Collects billing cycles selected and stores it in selectedBillingCycles state array
    *
    * @param data - SelectedBillingCycle
@@ -33,18 +48,8 @@ export const useCyclesStore = defineStore('cycles', () => {
    */
 
   function clickedBillingCycleHandler(data: SelectedBillingCycle): void {
-    // Check that data corresponds to SelectedBillingCycle interface
 
-    if (!data || !data.cycle || !data.planGroup || !data.planType) {
-      console.error(
-        `Invalid data passed into clickedBillingCycleHandler method in options store.  Data must contain keys of 'cycle', 'planGroup', and 'planType'`,
-      )
-      return
-    }
-
-    data.cycle = data.cycle.toLowerCase() as SelectedBillingCycle['cycle']
-    data.planGroup = Number(data.planGroup) as SelectedBillingCycle['planGroup']
-    data.planType = data.planType.toLowerCase() as SelectedBillingCycle['planType']
+    data = normalizeBillingCycle(data) as SelectedBillingCycle
 
     /**
      * Check that there are no plan groups selected with the same plan cycle with just a different billing cycle to avoid duplicate cycle selection.
@@ -84,7 +89,9 @@ export const useCyclesStore = defineStore('cycles', () => {
 
     // If the plan group and plan type do not exist in selectedBillingCycles, add it
 
-    selectedBillingCycles.value = [...selectedBillingCycles.value, data] as SelectedBillingCycle[]
+    if (!samePlanGroupTypeSelected) {
+      selectedBillingCycles.value.push(data)
+    }
   }
 
   /**
@@ -96,9 +103,8 @@ export const useCyclesStore = defineStore('cycles', () => {
    */
 
   function billingCyclePlanGroupTypeSelected(data: SelectedBillingCycle): boolean {
-    data.cycle = data.cycle.toLowerCase() as SelectedBillingCycle['cycle']
-    data.planGroup = Number(data.planGroup) as SelectedBillingCycle['planGroup']
-    data.planType = data.planType.toLowerCase() as SelectedBillingCycle['planType']
+
+    data = normalizeBillingCycle(data) as SelectedBillingCycle
 
     return (selectedBillingCycles.value as SelectedBillingCycle[]).some(
       (selected) =>

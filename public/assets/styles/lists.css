@@ -47,7 +47,7 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   gap: 1em;
-  min-height: 17em;
+  min-height: 18em;
   align-items: center;
 }
 
@@ -121,7 +121,11 @@ ul {
   margin: var(--vertical-padding-2) 0 var(--vertical-padding-3);
 }
 
-.price-container .discount {
+.discount-container p {
+  text-align: center;
+}
+
+.price-container .discount-container {
   transition: var(--transition-default);
   visibility: hidden;
   opacity: 0;

@@ -20,6 +20,8 @@ const { id, title, description, keyFeatures } = props.data
 
 const { planGroup, planType } = props
 
+const selectedStore = useSelectedStore()
+
 /**
  * Price output
  */
@@ -43,25 +45,24 @@ const outputNumbers: ComputedRef<Calculations> = computed(
 
 function priceSelect(e: Event): void {
   const clickedItemData = buttonClickData(e)
-  if (clickedItemData) useSelectedStore().clickedPriceHandler(clickedItemData)
+  if (clickedItemData) selectedStore.togglePlanSelection(clickedItemData)
 }
 
 /**
  * Check if price plan button has already been selected in the useSelectedStore selectedPlans state
  *
- * @param Event
  * @return boolean|void
  */
 
-function priceAlreadySelected(): boolean | void {
+const priceAlreadySelected: ComputedRef<boolean | void> = computed(() => {
   const clickedItemData: SelectedData = {
     plan: id,
     cycle: cycleSelected.value,
     planGroup,
     planType,
   }
-  return useSelectedStore().samePlanSelected(clickedItemData)
-}
+  return selectedStore.isPlanSelected(clickedItemData)
+})
 
 /**
  * Collect button click data
@@ -104,7 +105,7 @@ function buttonClickData(e: Event): SelectedData | void {
  * @return boolean
  */
 
-function anotherSiblingPlanPriceTypeSelected(): boolean {
+const anotherSiblingPlanPriceTypeSelected: ComputedRef<boolean | void> = computed(() => {
   const plansSelected = useSelectedStore().selectedPlans as SelectedData[]
 
   // Check of other sibling plans have been selected under the same billing cycle
@@ -123,32 +124,36 @@ function anotherSiblingPlanPriceTypeSelected(): boolean {
   // Check that selected billing cycle didn't change
 
   return anotherSiblingPlanSelected && !currentPlanSelected
-}
+})
 </script>
 
 <template>
   <li
-    :class="[{ 'disable-list-item': anotherSiblingPlanPriceTypeSelected() }, 'list-item-styling']"
+    :class="[{ 'disable-list-item': anotherSiblingPlanPriceTypeSelected }, 'list-item-styling']"
   >
     <div class="title-price-description-button-container">
       <h3 class="title text-color-1">{{ title }}</h3>
       <div class="price-container">
         <h4 class="price">{{ outputNumbers.outputs.monthlyOutput }} <small>per month</small></h4>
-        <p :class="[{ 'show-discount': outputNumbers.hasDiscount }, 'discount']">
-          {{ outputNumbers.outputs.discountOutput }} discount ({{
+        <div :class="[{ 'show-discount': outputNumbers.hasDiscount }, 'discount-container']">
+          <p>
+            {{ outputNumbers.outputs.discountOutput }} discount ({{
             outputNumbers.outputs.savingsOutput
-          }}
-          savings)
-        </p>
+          }} savings)
+          </p>
+          <p>
+            {{ outputNumbers.outputs.totalOutput }} total {{ cycleSelected }}
+          </p>
+        </div>
       </div>
       <p class="description">{{ description }}</p>
       <button
-        :tabindex="anotherSiblingPlanPriceTypeSelected() ? -1 : 0"
+        :tabindex="anotherSiblingPlanPriceTypeSelected ? -1 : 0"
         @click="priceSelect"
-        :class="[{ 'button-highlight': priceAlreadySelected() }, 'button']"
+        :class="[{ 'button-highlight': priceAlreadySelected }, 'button']"
         :data-price="cycleSelected"
       >
-        {{ priceAlreadySelected() ? `Selected Plan` : `Select Plan` }}
+        {{ priceAlreadySelected ? `Selected Plan` : `Select Plan` }}
       </button>
     </div>
     <hr />

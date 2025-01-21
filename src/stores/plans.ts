@@ -68,6 +68,7 @@ export interface PlanTypes {
  */
 
 export const usePlansStore = defineStore('plans', () => {
+  
   /**
    * Plans Url
    * Used to set url to make HTTP get request for plansData
@@ -134,6 +135,40 @@ export const usePlansStore = defineStore('plans', () => {
   }
 
   /**
+   * Helper function for getting monthly, quarterly, and yearly calculations made
+   *
+   * @param data - Plan
+   *
+   * @return PriceCalculations
+   */
+
+  function calculatePlanPrices(plan: Plan): PriceCalculations {
+
+    const monthly: Calculations = calculatePrice('monthly', plan.monthlyPrice)
+    const quarterly: Calculations = calculatePrice(
+      'quarterly',
+      plan.monthlyPrice,
+      plan.quarterlyDiscount,
+    )
+    const yearly: Calculations = calculatePrice(
+      'yearly',
+      plan.monthlyPrice,
+      plan.yearlyDiscount,
+    )
+    const estimatedAnnualROI: RoiOutput = {
+      total: plan.estimatedAnnualROI,
+      output: parseValue(plan.estimatedAnnualROI, 'dollar')
+    }
+
+    return {
+      monthly,
+      quarterly,
+      yearly,
+      estimatedAnnualROI
+    }
+  }
+
+  /**
    * Makes calculations for monthly, quarterly, and yearly price to factor in discounts
    * Assigns calculations to calculatedPlans state ref
    *
@@ -155,27 +190,7 @@ export const usePlansStore = defineStore('plans', () => {
           if (Array.isArray(section[key])) {
             const plans = section[key] as Plan[]
             plans.forEach((plan: Plan, index: number) => {
-              const monthly: Calculations = calculatePrice('monthly', plan.monthlyPrice)
-              const quarterly: Calculations = calculatePrice(
-                'quarterly',
-                plan.monthlyPrice,
-                plan.quarterlyDiscount,
-              )
-              const yearly: Calculations = calculatePrice(
-                'yearly',
-                plan.monthlyPrice,
-                plan.yearlyDiscount,
-              )
-              const estimatedAnnualROI: RoiOutput = {
-                total: plan.estimatedAnnualROI,
-                output: parseValue(plan.estimatedAnnualROI, 'dollar')
-              }
-              const priceCalculations: PriceCalculations = {
-                monthly,
-                quarterly,
-                yearly,
-                estimatedAnnualROI
-              }
+              const priceCalculations: PriceCalculations = calculatePlanPrices(plan)
               ;(section[key] as unknown as Plan[])[index] = {
                 ...plan,
                 priceCalculations,
