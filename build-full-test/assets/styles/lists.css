@@ -13,7 +13,7 @@ ul {
 }
 
 .lists-layouts {
-  animation: height-fade-in calc(var(--transition-default) * 2) forwards;
+  animation: height-fade-in calc(var(--transition-default) * 3) forwards;
   overflow: hidden;
 }
 

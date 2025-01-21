@@ -1,6 +1,6 @@
 .loading-spinner {
     opacity: 0;
-    transition: var(--transition-default);
+    transition: calc(var(--transition-default) / 3);
     position: absolute;
     width: 75%;
     height: 75%;
