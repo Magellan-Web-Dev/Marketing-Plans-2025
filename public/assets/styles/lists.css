@@ -12,6 +12,11 @@ ul {
   font-size: inherit;
 }
 
+.lists-layouts {
+  animation: height-fade-in calc(var(--transition-default) * 2) forwards;
+  overflow: hidden;
+}
+
 .list-layout {
   display: flex;
   justify-content: center;
@@ -31,9 +36,9 @@ ul {
 }
 
 .disable-list-item {
-    opacity: 0.75;
-    filter: saturate(0) brightness(0.5);
-    pointer-events: none;
+  opacity: 0.75;
+  filter: saturate(0) brightness(0.5);
+  pointer-events: none;
 }
 
 .list-item-styling :is(h2, h3, h4, .description, .key-features, .price) {
