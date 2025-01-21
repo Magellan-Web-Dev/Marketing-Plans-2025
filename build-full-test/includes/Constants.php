@@ -14,4 +14,3 @@
     define("UNAUTHORIZED_REDIRECT_URL", $_ENV['UNAUTHORIZED_REDIRECT_URL'] ?? 'https://www.partnerwithmagellan.com/unauthorized/');
     define("PRODUCTION_BASE_URL", $_ENV['VITE_PRODUCTION_BASE_URL'] ?? '/');
     define("CURRENT_BASE_URL", ENVIRONMENT === 'development' ? '/' : PRODUCTION_BASE_URL);
-    define("PRODUCTION_ROUTE_URL", $_ENV['VITE_PRODUCTION_ROUTE_URL'] ?? '/');

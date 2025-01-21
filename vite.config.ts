@@ -7,20 +7,19 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import dotenv from 'dotenv'
 
 // Load environment variables from .env file
-dotenv.config();
+dotenv.config()
 
 // https://vite.dev/config/
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueDevTools(),
-  ],
+  base: process.env.VITE_PRODUCTION_BASE_URL,
+  build: {
+    target: 'esnext', // Use modern JavaScript syntax
+  },
+  plugins: [vue(), vueJsx(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: process.env.VITE_PRODUCTION_BASE_URL,
 })

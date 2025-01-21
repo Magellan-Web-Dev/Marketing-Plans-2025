@@ -52,7 +52,7 @@
  * File access authentication.  Used to protect against direct access to files for the app without being authenticated.  
  * Skipped if no specific file is requested other than the base url
  * IMPORTANT - The server must be configured for all url requests other than the base url to be redirected with a file url query of the requested path
- * Example.  Url https://www.partnerwithmagellan.com/applications/apps/client_use/marketing_plans/assets/images/AdobeStock_354130260.webp will be directed as https://www.partnerwithmagellan.com/applications/apps/internal_use/sales_calculator?file=assets/images/AdobeStock_354130260.webp for the $_GET['file'] to be assets/images/AdobeStock_354130260.webp
+ * Example.  Url https://www.partnerwithmagellan.com/assets/images/AdobeStock_354130260.webp will be directed as https://www.partnerwithmagellan.com/applications/apps/internal_use/sales_calculator?file=assets/images/AdobeStock_354130260.webp for the $_GET['file'] to be assets/images/AdobeStock_354130260.webp
  * The code runs on an apache server, and there is a .htaccess file that handles this url query directing.
  */
 
@@ -72,15 +72,4 @@ FileAccessAuth::authenticate(
     $_SESSION[SESSION_NAME] = true;
 
     readfile(APP_FILE);
-
-    // Makes sure url in production is at /marketing-plans
-
-    echo '
-        <script>
-            window.addEventListener("load", () => {
-                history.pushState({}, "/", "'.PRODUCTION_ROUTE_URL.'")
-            })
-        </script>
-    ';
-
     exit;

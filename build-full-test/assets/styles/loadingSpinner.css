@@ -1,0 +1,16 @@
+.loading-spinner {
+    opacity: 0;
+    transition: var(--transition-default);
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    inset: 0;
+    margin: auto;
+    fill: var(--color-1);
+    filter: drop-shadow(0px 0px 12px #000000);
+    pointer-events: none;
+}
+
+.loading .loading-spinner {
+    opacity: 1;
+}

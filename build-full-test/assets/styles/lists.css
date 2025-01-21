@@ -1,0 +1,144 @@
+:root {
+  --list-card-gap: 2.5em;
+  --list-card-content-gap: 0.5em;
+  --list-card-row-gap: 1em;
+  --border-thickness-1: 0.25em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  font-size: inherit;
+}
+
+.lists-layouts {
+  animation: height-fade-in calc(var(--transition-default) * 2) forwards;
+  overflow: hidden;
+}
+
+.list-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--list-card-gap);
+}
+
+.list-item-styling {
+  padding: var(--vertical-padding-2) var(--side-padding-2);
+  border: var(--border-thickness-1) var(--color-1) solid;
+  flex: 1 1 var(--content-text-small);
+  max-width: var(--content-text-normal);
+  background: var(--overlay-2);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-default);
+}
+
+.disable-list-item {
+  opacity: 0.75;
+  filter: saturate(0) brightness(0.5);
+  pointer-events: none;
+}
+
+.list-item-styling :is(h2, h3, h4, .description, .key-features, .price) {
+  text-align: center;
+  text-wrap: balance;
+  font-weight: 500;
+}
+
+.list-item-styling .title-price-description-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  min-height: 19em;
+  align-items: center;
+}
+
+.list-item-styling .discount {
+  text-align: center;
+}
+
+.list-items-styling .description {
+  margin-top: auto;
+}
+
+.list-item-styling hr {
+  height: 1px;
+  border: 0px;
+  background: var(--white);
+  margin: var(--vertical-padding-2a) 0 var(--vertical-padding-3);
+}
+
+.key-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-card-content-gap);
+}
+
+.key-features-list {
+  margin-top: 0.75em;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.key-item-styling {
+  display: flex;
+  align-items: start;
+  gap: var(--list-card-content-gap);
+}
+
+.key-item-styling::before {
+  content: '';
+  background: url('/assets/icons/checkmark.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  margin-top: 0.125em;
+}
+
+.billing-cycle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--vertical-padding-3);
+  width: var(--content-text-normal);
+  margin: 0 auto;
+}
+
+.billing-cycle-container:not(:first-child) {
+  margin-top: var(--vertical-padding-1);
+}
+
+.billing-cycles-options-container {
+  align-self: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--overlay-2);
+  border: var(--border-thickness-1) var(--color-1) solid;
+}
+
+.select-plan-text {
+  margin: var(--vertical-padding-2) 0 var(--vertical-padding-3);
+}
+
+.discount-container p {
+  text-align: center;
+}
+
+.price-container .discount-container {
+  transition: var(--transition-default);
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+.price-container .show-discount {
+  height: auto;
+  visibility: visible;
+  opacity: 1;
+}
