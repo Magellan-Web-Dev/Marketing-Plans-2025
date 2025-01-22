@@ -1,17 +1,23 @@
 <IfModule mod_rewrite.c>
     # Enable Rewrite Engine
     RewriteEngine On
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off 
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Set the base directory
     RewriteBase /applications/apps/client_use/marketing_plans/
-
-    # Deny access to .env files
-    <FilesMatch "^\.env$">
-        Require all denied
-    </FilesMatch>
-
-    # Prevent directory browsing
-    Options -Indexes
 
     # Redirect all valid files and subfolders through index.php
     RewriteCond %{REQUEST_URI} !^/applications/apps/client_use/marketing_plans/index\.php$
     RewriteRule ^(.*)$ /applications/apps/client_use/marketing_plans/index.php?file=$1 [QSA,L]
 </IfModule>
+
+# Deny access to .env files
+<FilesMatch "^\.env$">
+    Require all denied
+</FilesMatch>
+
+# Prevent directory browsing
+Options -Indexes

@@ -1,7 +1,7 @@
 /* Background 1 Styling.  This background has the gears with the cubed pattern repeated */
 
 .background-style-1 {
-  background: url('/applications/apps/client_use/marketing_plans/assets/images/AdobeStock_354130260.webp');
+  background: url('/marketing-plans/assets/images/AdobeStock_354130260.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -32,7 +32,7 @@
 }
 
 .background-style-1::before {
-  background: url('/applications/apps/client_use/marketing_plans/assets/images/white-pattern-repeat.png');
+  background: url('/marketing-plans/assets/images/white-pattern-repeat.png');
   background-size: 48px;
   background-attachment: fixed;
   opacity: 0.25;

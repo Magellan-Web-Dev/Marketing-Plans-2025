@@ -16,9 +16,13 @@ onMounted(async(): Promise<void> => {
 
   const plans = usePlansStore()
 
-  // Set plans data url
+  // Set plans data url based upon environment
 
-  plans.setUrl(import.meta.env.VITE_PRODUCTION_BASE_URL + import.meta.env.VITE_DATA_URL)
+  const dataUrl: string = import.meta.env.MODE === 'development'
+    ? import.meta.env.VITE_PRODUCTION_ROUTE_URL + import.meta.env.VITE_DATA_URL
+    : import.meta.env.VITE_PRODUCTION_BASE_URL + import.meta.env.VITE_DATA_URL
+
+  plans.setUrl(dataUrl)
 
   // Fetch plans data
 
