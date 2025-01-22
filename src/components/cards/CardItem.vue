@@ -37,6 +37,16 @@ const outputNumbers: ComputedRef<Calculations> = computed(
 )
 
 /**
+ * Verbiage output
+ */
+
+const pricePerVerbiage: ComputedRef<'month' | 'quarter' | 'year'> = computed(
+  () =>
+    cycleSelected.value === 'monthly' ? 'month' :
+    cycleSelected.value === 'quarterly' ? 'quarter' :
+    cycleSelected.value === 'yearly' ? 'year' : 'month'
+)
+/**
  * Price select click handler
  *
  * @param Event
@@ -134,7 +144,7 @@ const anotherSiblingPlanPriceTypeSelected: ComputedRef<boolean | void> = compute
     <div class="title-price-description-button-container">
       <h3 class="title text-color-1">{{ title }}</h3>
       <div class="price-container">
-        <h4 class="price">{{ outputNumbers.outputs.monthlyOutput }} <small>per month</small></h4>
+        <h4 class="price">{{ outputNumbers.outputs.totalOutput }} <small>per {{ pricePerVerbiage }}</small></h4>
         <div :class="[{ 'show-discount': outputNumbers.hasDiscount }, 'discount-container']">
           <p>
             {{ outputNumbers.outputs.discountOutput }} discount ({{
@@ -142,7 +152,7 @@ const anotherSiblingPlanPriceTypeSelected: ComputedRef<boolean | void> = compute
           }} savings)
           </p>
           <p>
-            {{ outputNumbers.outputs.totalOutput }} total {{ cycleSelected }}
+            {{ outputNumbers.outputs.monthlyOutput }} per month
           </p>
         </div>
       </div>

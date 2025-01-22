@@ -12,7 +12,7 @@ dotenv.config()
 // https://vite.dev/config/
 
 export default defineConfig({
-  base: process.env.VITE_PRODUCTION_BASE_URL,
+  base: process.env.VITE_PRODUCTION_ROUTE_URL,
   build: {
     target: 'esnext', // Use modern JavaScript syntax
   },

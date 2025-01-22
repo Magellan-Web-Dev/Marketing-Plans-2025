@@ -71,12 +71,97 @@ async function updateEnvFileEnvironment(mode) {
   }
 }
 
+// Function to replace text in all HTML and CSS files in the specified directory
+
+async function replaceTextInFiles(directory) {
+  try {
+    console.log('Directory being processed:', directory);
+
+    if (!directory || typeof directory !== 'string') {
+      throw new Error('Invalid directory path provided.');
+    }
+
+    const files = await fs.readdir(directory);
+
+    // Loop through each file in the specified directory
+    for (const file of files) {
+      const filePath = path.join(directory, file);
+
+      // Check if the file is a directory
+      const stat = await fs.stat(filePath);
+
+      // If it's a directory, skip it or handle files inside it without recursion
+      if (stat.isDirectory()) {
+        continue; // Skip subdirectories to avoid infinite loop
+      } else if (file.endsWith('.html') || file.endsWith('.css')) {
+        // If it's an HTML or CSS file, replace the text inside it
+        console.log(`Processing ${filePath}...`);
+        let content = await fs.readFile(filePath, 'utf8');
+
+        // Get routingUrl and baseUrl from environment variables
+        const routingUrl = process.env.VITE_PRODUCTION_ROUTE_URL;
+        const baseUrl = process.env.VITE_PRODUCTION_BASE_URL;
+
+        if (routingUrl && baseUrl) {
+          // Replace all instances of routingUrl with baseUrl
+          content = content.replace(new RegExp(routingUrl, 'g'), baseUrl);
+
+          // Write the updated content back to the file
+          await fs.writeFile(filePath, content, 'utf8');
+          console.log(`Replaced "${routingUrl}" with "${baseUrl}" in ${filePath}.`);
+        } else {
+          console.log('routingUrl or baseUrl is not set in the environment variables.');
+        }
+      }
+    }
+  } catch (err) {
+    console.error('Error replacing text in files:', err);
+  }
+}
+
+// Function to replace text in the app.html file
+
+async function replaceTextInAppHtml() {
+  try {
+    const appHtmlPath = path.join(distDir, 'app.html');
+    const appHtmlContent = await fs.readFile(appHtmlPath, 'utf8');
+
+    const routingUrl = process.env.VITE_PRODUCTION_ROUTE_URL;
+    const baseUrl = process.env.VITE_PRODUCTION_BASE_URL;
+
+    if (routingUrl && baseUrl) {
+      // Replace all instances of routingUrl with baseUrl in app.html
+      const updatedContent = appHtmlContent.replace(new RegExp(routingUrl, 'g'), baseUrl);
+
+      // Write the updated content back to the app.html file
+      await fs.writeFile(appHtmlPath, updatedContent, 'utf8');
+      console.log('Replaced routing URL in app.html.');
+    } else {
+      console.log('routingUrl or baseUrl is not set in the environment variables.');
+    }
+  } catch (err) {
+    console.error('Error replacing text in app.html:', err);
+  }
+}
+
 ;(async () => {
   try {
+
     // Update .env file for production and copy it to the `dist` root
 
     console.log('Updating .env file to production...')
     await updateEnvFileEnvironment('production')
+
+    // Replace text in the app.html file
+
+    console.log('Replacing text in app.html...')
+    await replaceTextInAppHtml()
+
+    // Replace text in all HTML and CSS files in the /dist/assets folder
+
+    console.log('Replacing text in HTML and CSS files in assets...')
+    const assetsDir = path.join(distDir, 'assets'); // Path to assets directory
+    await replaceTextInFiles(assetsDir)
 
     // Deploy files to FTP
 
