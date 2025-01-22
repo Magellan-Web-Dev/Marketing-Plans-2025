@@ -12,24 +12,28 @@
 @import 'lists.css';
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto';
-    font-weight: 500;
-    color: var(--white);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: var(--white);
 }
 
 html {
-    interpolate-size: allow-keywords;
+  interpolate-size: allow-keywords;
 }
 
 html,
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 ::selection {
-    background: var(--color-1);
-    color: var(--white);
+  background: var(--color-1);
+  color: var(--white);
+}
+
+main {
+  overflow: hidden;
 }

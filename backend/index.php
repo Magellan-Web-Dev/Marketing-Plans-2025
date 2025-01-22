@@ -56,14 +56,14 @@
  * The code runs on an apache server, and there is a .htaccess file that handles this url query directing.
  */
 
-require_once INCLUDES_DIR . '/FileAccessAuth.php';
+    require_once INCLUDES_DIR . '/FileAccessAuth.php';
 
-FileAccessAuth::authenticate(
-    BASE_DIR, 
-    SESSION_NAME, 
-    FORBIDDEN_FILE_EXTENSIONS, 
-    UNAUTHORIZED_REDIRECT_URL
-);
+    FileAccessAuth::authenticate(
+        BASE_DIR, 
+        SESSION_NAME, 
+        FORBIDDEN_FILE_EXTENSIONS, 
+        UNAUTHORIZED_REDIRECT_URL
+    );
 
 /**
  * If SECURE constant variable is true, set session and load application.
